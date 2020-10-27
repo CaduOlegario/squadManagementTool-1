@@ -1,7 +1,8 @@
 import React from 'react';
 import {AppBar, Toolbar, Grid, Avatar, Typography} from "@material-ui/core";
+import StringUtils from "../../utils/StringUtils";
 
-const Header = () => {
+const Header = ({username}) => {
     return (
         <AppBar position="static">
             <Toolbar>
@@ -17,11 +18,11 @@ const Header = () => {
                     <Grid item xs={12}></Grid>
                     <Grid item>
                         <Typography variant="h6" noWrap>
-                            John Doe
+                            {username}
                         </Typography>
                     </Grid>
                     <Grid item>
-                        <Avatar>JD</Avatar>
+                        <Avatar>{StringUtils.getNameInitials(username)}</Avatar>
                     </Grid>
                 </Grid>
             </Toolbar>

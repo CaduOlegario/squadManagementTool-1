@@ -7,10 +7,11 @@ const Input = (props) => {
     return (
         <div>
             <Typography variant="subtitle1" color={isFocused ? "primary" : ""}>
-                Nome
+                {props.label}
             </Typography>
             <TextField
                 {...props}
+                label=""
                 variant="outlined"
                 onFocus={() => setFocused(true)}
                 onBlur={() => setFocused(false)} />

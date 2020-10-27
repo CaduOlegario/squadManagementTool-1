@@ -1,26 +1,28 @@
 import './styles/App.scss';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { ThemeProvider } from '@material-ui/core/styles';
+import {BrowserRouter as Router} from 'react-router-dom';
+import {ThemeProvider} from '@material-ui/core/styles';
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
 import theme from "./Theme";
 import React from "react";
-import NewPage from "./components/pages/NewPage";
+import Routes from "./Routes";
 
 function App() {
+
+  const currentUser = {
+    name: "John Doe"
+  };
+
   return (
-  <Router>
-    <ThemeProvider theme={theme}>
-      <Header/>
-      <div>
-        <Switch>
-          <Route exact path='/' component={NewPage} />
-            <Route path='/about' component={NewPage} />
-        </Switch>
-      </div>
-      <Footer/>
-    </ThemeProvider>
-  </Router>
+      <Router>
+        <ThemeProvider theme={theme}>
+          <Header username={currentUser.name}/>
+          <div>
+            <Routes />
+          </div>
+          <Footer/>
+        </ThemeProvider>
+      </Router>
   );
 }
 
