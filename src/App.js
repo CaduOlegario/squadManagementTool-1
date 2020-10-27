@@ -1,27 +1,26 @@
 import './styles/App.scss';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import Header from "./header/Header";
-import About from "./header/About";
+import { ThemeProvider } from '@material-ui/core/styles';
 import Footer from "./components/layout/Footer";
+import Header from "./components/layout/Header";
+import theme from "./Theme";
+import React from "react";
+import NewPage from "./components/pages/NewPage";
 
 function App() {
   return (
-    <Router>
+  <Router>
+    <ThemeProvider theme={theme}>
+      <Header/>
       <div>
-        <h2>Welcome to React Router Tutorial</h2>
-        <nav>
-          <ul>
-            <li><Link to={'/'} > Home </Link></li>
-            <li><Link to={'/contact'} >Contact</Link></li>
-          </ul>
-        </nav>
-        <hr />
         <Switch>
-          <Route exact path='/' component={Footer} />
-          <Route path='/about' component={Footer} />
+          <Route exact path='/' component={NewPage} />
+            <Route path='/about' component={NewPage} />
         </Switch>
       </div>
-    </Router>
+      <Footer/>
+    </ThemeProvider>
+  </Router>
   );
 }
 
