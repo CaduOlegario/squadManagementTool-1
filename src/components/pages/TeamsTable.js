@@ -1,7 +1,7 @@
 import React from 'react';
 import Table from "../layout/Table";
 
-const TablePage = (props) => {
+const TeamsTable = (props) => {
 
     const columns = [
         {
@@ -31,4 +31,4 @@ const TablePage = (props) => {
     );
 };
 
-export default TablePage;
+export default TeamsTable;

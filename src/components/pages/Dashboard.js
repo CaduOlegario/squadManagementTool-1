@@ -1,8 +1,9 @@
 import React from 'react';
-import TablePage from "./TablePage";
+import TeamsTable from "./TeamsTable";
 import Grid from "@material-ui/core/Grid";
+import TopList from "./TopList";
 
-const NewPage = () => {
+const Dashboard = () => {
     const data = [
         {id: 1, name: "Jose", description: "Tester da Venturus"},
         {id: 2, name: "Miguel", description: "Jogador famosão do Flamengo"}
@@ -11,16 +12,21 @@ const NewPage = () => {
     return (
         <Grid container justify="center" spacing={6} style={{height: "calc(100% + 48px)" }}>
             <Grid item xs={6}>
-                <TablePage data={data}/>
+                <TeamsTable data={data}/>
             </Grid>
-            <Grid item xs={6}>
-                <TablePage data={data}/>
+            <Grid item xs={6} container direction="column" spacing={6} alignItems="stretch">
+                <Grid item style={{height: "50%"}}>
+                    <TopList/>
+                </Grid>
+                <Grid item style={{height: "50%"}}>
+                    <TopList/>
+                </Grid>
             </Grid>
         </Grid>
     )
 };
 
-export default NewPage;
+export default Dashboard;
 
 
 {/*<Box p={8}>*/}

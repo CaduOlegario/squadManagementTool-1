@@ -33,25 +33,21 @@ const getMuiTheme = (theme) =>
             },
             MuiTableRow: {
                 root: {
-                    '&:hover h6': {
-                        color: theme.palette.font.main
+                    '&:hover [class*="MuiTableCell-body"]': {
+                        color: theme.palette.font.main,
+                        backgroundColor: theme.palette.background.light
                     },
-                    '&:hover .MuiSvgIcon-root': {
-                        color: theme.palette.font.main
-                    },
-                    '&:hover': {
-                       backgroundColor: theme.palette.background.light
-                    }
                 },
             },
             MUIDataTable: {
                 paper: {
                     padding: "0 20px",
-                    height: "100%"
+                    height: "100%",
+                    borderRadius: "14px"
                 },
                 responsiveScroll: {
                     maxHeight: 'none',
-                },
+                }
             },
             MuiTableHead: {
                 root: {
@@ -117,6 +113,31 @@ const styles = {
     },
 };
 
+const customRowRenderLogic = (data, classes) => {
+    return (
+        <TableRow className={classes.tableRow}>
+            <TableCell>
+                <Typography variant="subtitle2">{data[0]}</Typography>
+            </TableCell>
+            <TableCell>
+                <Box display="flex" flexDirection="row" alignItems="center">
+                    <Box width="100%">
+                        <Typography variant="subtitle2" component="span" >{data[1]}</Typography>
+                    </Box>
+                    <Box display="flex" className={classes.actions} alignItems="center">
+                        <Tooltip title="Delete" placement="top" aria-label="delete">
+                            <DeleteIcon className={classes.actionIcon}></DeleteIcon>
+                        </Tooltip>
+                        <Tooltip title="Edit" placement="top" aria-label="Edit">
+                            <EditIcon className={classes.actionIcon}></EditIcon>
+                        </Tooltip>
+                    </Box>
+                </Box>
+            </TableCell>
+        </TableRow>
+    );
+};
+
 const Table = (props) => {
     const {classes} = props;
     const theme = useTheme();
@@ -137,32 +158,13 @@ const Table = (props) => {
             rowHover: false,
             selectableRows: "none",
             responsive: "vertical",
-            tableBodyHeight: `calc(100% - 117px)`,
+            tableBodyHeight: `calc(100% - 141px)`,
             tableBodyMaxHeight: '100%',
-            customRowRender: (data, dataIndex, rowIndex) => {
-                return (
-                    <TableRow className={classes.tableRow}>
-                        <TableCell>
-                            <Typography variant="subtitle2">{data[0]}</Typography>
-                        </TableCell>
-                        <TableCell>
-                            <Box display="flex" flexDirection="row" alignItems="center">
-                                <Box width="100%">
-                                    <Typography variant="subtitle2" >{data[1]}</Typography>
-                                </Box>
-                                <Box display="flex" className={classes.actions} alignItems="center">
-                                    <Tooltip title="Delete" placement="top" aria-label="delete">
-                                        <DeleteIcon className={classes.actionIcon}></DeleteIcon>
-                                    </Tooltip>
-                                    <Tooltip title="Edit" placement="top" aria-label="Edit">
-                                        <EditIcon className={classes.actionIcon}></EditIcon>
-                                    </Tooltip>
-                                </Box>
-                            </Box>
-                        </TableCell>
-                    </TableRow>
-                );
-            },
+            elevation: 1,
+            title: <div>
+                <Typography variant="h1"> {props.title} </Typography>
+            </div>,
+            customRowRender: (data) => customRowRenderLogic(data, classes),
             customToolbar: ({displayData}) => {
               return <div>
                   <Button variant="contained">
@@ -182,7 +184,3 @@ const Table = (props) => {
 }
 
 export default withStyles(styles)(Table);
-
-// '&:hover h6': {MuiSvgIcon-root-93
-//     color: "red"
-// },

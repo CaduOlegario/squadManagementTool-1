@@ -1,18 +1,18 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import NewPage from "./components/pages/NewPage";
+import Dashboard from "./components/pages/Dashboard";
 
 export default function Routes() {
     return (
         <Switch>
             <Route exact path="/">
-                <NewPage />
+                <Dashboard />
             </Route>
             <Route path="/home">
-                <NewPage />
+                <Dashboard />
             </Route>
             <Route>
-                <NewPage />
+                <Dashboard />
             </Route>
         </Switch>
     );
