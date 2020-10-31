@@ -12,19 +12,19 @@ const TablePage = (props) => {
             }
         }, {
             name: "name",
-            label: "Nome"
-        }, {
-            name: "cnpj",
-            label: "CNPJ",
+            label: "Name",
             options: {
-                customBodyRender: value => <div>{value}</div>
+
             }
+        }, {
+            name: "description",
+            label: "Description"
         }
     ];
 
     return (
         <Table
-            title="List of players?"
+            title="My Teams"
             data={props.data}
             columns={columns}
         />

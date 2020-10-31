@@ -1,5 +1,3 @@
-import React from "react";
-
 class StringUtils {
 
     static getNameInitials = name =>

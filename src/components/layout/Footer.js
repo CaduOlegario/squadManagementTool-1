@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
         top: 'auto',
         bottom: 0,
         background: "#d0d0d0",
-        color: "#444242"
+        color: "#444242",
     }
 }));
 
@@ -17,7 +17,7 @@ const Footer = () => {
     const classes = useStyles();
 
     return (
-        <AppBar className={classes.appBar}>
+        <AppBar className={classes.appBar} position="sticky">
             <Box p={1}>
                 <Typography variant="subtitle1" align="center">
                     2020 - All rights reserved
