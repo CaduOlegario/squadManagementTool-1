@@ -19,7 +19,7 @@ const Footer = () => {
     return (
         <AppBar className={classes.appBar} position="sticky">
             <Box p={1}>
-                <Typography variant="subtitle1" align="center">
+                <Typography variant="body1" align="center">
                     2020 - All rights reserved
                 </Typography>
             </Box>

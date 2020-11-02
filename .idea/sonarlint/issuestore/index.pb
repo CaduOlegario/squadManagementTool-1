@@ -1,8 +1,4 @@
 
-O
-src/components/pages/NewPage.js,4/8/4815a96d62172c247743dbfa2fd6a5b2f53bc61c
-Q
-!src/components/pages/TablePage.js,0/2/02a70e6860f2bd88893f3474ff20405b781c06e0
 =
 src/Routes.js,2/2/227eace7bc0df3b01bf5a6e33617e38853b6e0e4
 N

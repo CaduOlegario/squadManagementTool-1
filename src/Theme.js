@@ -1,6 +1,7 @@
 import {createMuiTheme, responsiveFontSizes} from '@material-ui/core/styles';
-import purple from '@material-ui/core/colors/purple';
-import pink from '@material-ui/core/colors/pink';
+
+const mainColor = "rgb(191,14,79)";
+const secondaryColor = "rgb(86,45,139)";
 
 let theme = createMuiTheme({
     typography: {
@@ -8,13 +9,24 @@ let theme = createMuiTheme({
             'Montserrat',
             'sans-serif'
         ].join(','),
+
+        h1: {
+            fontSize: "25px",
+            fontWeight: 600,
+            color: secondaryColor
+        },
+        subtitle1: {
+            fontWeight: 700,
+            fontSize: "0.9rem"
+        }
     },
     palette: {
         primary: {
-            main: pink[500]
+            main: mainColor,
+            dark: "rgb(138,31,110)"
         },
         secondary: {
-            main: "rgb(86,45,139)",
+            main: secondaryColor,
         },
         background: {
             light: "rgb(247,238,247)"
@@ -26,11 +38,11 @@ let theme = createMuiTheme({
 });
 
 theme.overrides = {
-    MuiAppBar: {
-        colorPrimary: {
-            background: "linear-gradient(to right, " + theme.palette.primary.main + ", " + theme.palette.secondary.main + ")"
+    MuiTypography: {
+        root: {
+            color: "rgb(67,67,67)"
         }
-    }
+    },
 };
 
 theme = responsiveFontSizes(theme);

@@ -6,6 +6,7 @@ import theme from "./Theme";
 import React from "react";
 import Routes from "./Routes";
 import Box from "@material-ui/core/Box";
+import SnackbarProvider from 'react-simple-snackbar'
 
 function App() {
 
@@ -15,22 +16,23 @@ function App() {
 
   return (
       <Router>
-        <ThemeProvider theme={theme}>
-            <Box height="100vh" display="flex" flexDirection="column">
-                <Box>
-                    <Header username={currentUser.name}/>
-                </Box>
-                <Box flex={1} overflow="auto" style={{display: "flex", alignItems: "stretch"}}>
-                    <div style={{width: "100%", padding: "40px"}}>
-                        <Routes />
-                    </div>
-                </Box>
-                <Box>
-                    <Footer/>
-                </Box>
-            </Box>
-
-        </ThemeProvider>
+          <ThemeProvider theme={theme}>
+              <Box height="100vh" display="flex" flexDirection="column">
+                  <Box>
+                      <Header username={currentUser.name}/>
+                  </Box>
+                  <Box flex={1} overflow="auto" style={{display: "flex", alignItems: "stretch"}}>
+                      <SnackbarProvider>
+                          <div style={{width: "100%", padding: "40px"}}>
+                                <Routes />
+                          </div>
+                      </SnackbarProvider>
+                  </Box>
+                  <Box>
+                      <Footer/>
+                  </Box>
+              </Box>
+          </ThemeProvider>
       </Router>
   );
 }

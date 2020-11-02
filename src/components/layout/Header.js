@@ -1,9 +1,29 @@
 import React from 'react';
-import {AppBar, Toolbar, Grid, Avatar, Typography} from "@material-ui/core";
+import {AppBar, Toolbar, Grid, Avatar, Typography, createMuiTheme, MuiThemeProvider} from "@material-ui/core";
 import StringUtils from "../../utils/StringUtils";
+import useTheme from "@material-ui/core/styles/useTheme";
+import theme from "../../Theme";
+
+const getMuiTheme = (theme) =>
+    createMuiTheme({
+        ...theme,
+        overrides: {
+            MuiAppBar: {
+                colorPrimary: {
+                    background: "linear-gradient(to right, " + theme.palette.primary.main + ", " + theme.palette.primary.dark + ")"
+                }
+            },
+            MuiAvatar: {
+                colorDefault: {
+                    color: "black"
+                }
+            }
+        }
+    });
 
 const Header = ({username}) => {
     return (
+        <MuiThemeProvider theme={getMuiTheme(useTheme())}>
         <AppBar position="static">
             <Toolbar>
                 <Grid container spacing={1} alignItems="center" wrap="nowrap">
@@ -22,11 +42,16 @@ const Header = ({username}) => {
                         </Typography>
                     </Grid>
                     <Grid item>
-                        <Avatar>{StringUtils.getNameInitials(username)}</Avatar>
+                        <Avatar>
+                            <Typography variant="h6">
+                                {StringUtils.getNameInitials(username)}
+                            </Typography>
+                        </Avatar>
                     </Grid>
                 </Grid>
             </Toolbar>
         </AppBar>
+        </MuiThemeProvider>
     )
 };
 

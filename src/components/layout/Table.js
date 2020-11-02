@@ -14,6 +14,7 @@ import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import AddIcon from '@material-ui/icons/Add';
 import useTheme from "@material-ui/core/styles/useTheme";
+import {Link} from "react-router-dom";
 
 const getMuiTheme = (theme) =>
     createMuiTheme({
@@ -66,13 +67,7 @@ const getMuiTheme = (theme) =>
                     padding: "14px 16px 0 !important"
                 }
             },
-            MUIDataTableToolbar: {
-              left: {
-                  fontSize: "25px",
-                  fontWeight: 600,
-                  color: theme.palette.secondary.main
-              }
-            },
+
             MuiTypography: {
                 subtitle2: {
                     fontWeight: 600
@@ -85,13 +80,13 @@ const getMuiTheme = (theme) =>
                 }
             },
             MuiButton: {
-                root: {
+                text: {
                     padding: "5px 0",
                     minWidth: "40px",
                     borderRadius: "12px",
                     background: "linear-gradient(to bottom, " + theme.palette.primary.main + ", " + theme.palette.secondary.main + ")"
                 },
-                contained: {
+                label: {
                     color: "white",
                     fontSize: "1.7rem"
                 }
@@ -145,7 +140,7 @@ const Table = (props) => {
     const dataTableProps = {
         ...props,
         title: <div>
-            {props.title}
+            <Typography variant="h1"> {props.title} </Typography>
         </div>,
         options: {
             rowsPerPage: 7,
@@ -161,15 +156,15 @@ const Table = (props) => {
             tableBodyHeight: `calc(100% - 141px)`,
             tableBodyMaxHeight: '100%',
             elevation: 1,
-            title: <div>
-                <Typography variant="h1"> {props.title} </Typography>
-            </div>,
             customRowRender: (data) => customRowRenderLogic(data, classes),
             customToolbar: ({displayData}) => {
               return <div>
-                  <Button variant="contained">
+                  {/*<Button variant="contained">*/}
+                  {/*    <AddIcon style={{fontSize: "1.5rem"}}/>*/}
+                  {/*</Button>*/}
+                  <Link component={Button} to="/form">
                       <AddIcon style={{fontSize: "1.5rem"}}/>
-                  </Button>
+                  </Link>
               </div>
             },
             ...props.options,
