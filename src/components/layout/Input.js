@@ -8,21 +8,20 @@ import useTheme from "@material-ui/core/styles/useTheme";
 
 const useStyles = makeStyles(theme => ({
     root: {
-        "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-            borderColor: "rgb(169, 164, 164)"
-        }
+
     },
-    error: {
-        "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-            borderColor: "primary"
-        }
-    }
 }));
 
 
 const getMuiTheme = (theme) =>
     createMuiTheme({
         ...theme,
+        palette: {
+            ...theme.palette,
+            secondary: {
+                main: 'rgb(0, 0, 0)'
+            }
+        },
         overrides: {
             MuiInputBase: {
                 root: {
@@ -77,9 +76,8 @@ const Input = (props) => {
                 {...props}
                 label=""
                 variant="outlined"
-                // onFocus={() => setFocused(true)}
+                color="secondary"
                 fullWidth
-                color="font"
                 onBlur={() => checkError()} />
         </ThemeProvider>
     )

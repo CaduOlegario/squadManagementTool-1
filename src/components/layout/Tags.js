@@ -10,15 +10,19 @@ import useTheme from "@material-ui/core/styles/useTheme";
 
 const useStyles = makeStyles(theme => ({
     root: {
-        "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-            borderColor: "rgb(169, 164, 164)"
-        }
+
     },
 }));
 
 const getMuiTheme = (theme) =>
     createMuiTheme({
         ...theme,
+        palette: {
+            ...theme.palette,
+            secondary: {
+                main: 'rgb(0, 0, 0)'
+            }
+        },
         overrides: {
             MuiInputBase: {
                 root: {
@@ -32,7 +36,7 @@ const getMuiTheme = (theme) =>
             },
             MuiAutocomplete: {
                 inputRoot: {
-                    height: "200px",
+                    height: "114px",
                     alignContent: "baseline"
                 }
             }
@@ -62,9 +66,9 @@ const Tags = (props) => {
                 renderTags={(value, getTagProps) =>
                     value.map((option, index) => (
                         <Chip
-                            variant="outlined"
                             label={option}
                             color="primary"
+                            size="small"
                             clickable
                             deleteIcon={<ClearIcon />}
                             {...getTagProps({ index })} />
@@ -73,6 +77,7 @@ const Tags = (props) => {
                 renderInput={(params) => (
                     <TextField
                         {...params}
+                        color="secondary"
                         variant="outlined"
                         placeholder={props.value.length === 0 && props.placeholder}
                     />

@@ -11,6 +11,9 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
 import Tags from "../layout/Tags";
+import Button from "../layout/Button";
+import { withSnackbar } from 'react-simple-snackbar'
+import defaultToastConfig from "../../utils/ToastUtils";
 
 class TeamForm extends Component {
 
@@ -22,7 +25,7 @@ class TeamForm extends Component {
                 name: "",
                 website: "",
                 description: "",
-                type: "real",
+                type: null,
                 tags: []
             }
         };
@@ -43,6 +46,15 @@ class TeamForm extends Component {
         })
     };
 
+    validateSave = () => {
+        const { openSnackbar } = this.props;
+        const {name, website, type} = this.state.team;
+        if (!name || !website || !type) {
+            openSnackbar("Name and Website are required")
+        }
+
+    };
+
     render() {
         const {name, website, description, type, tags} = this.state.team;
 
@@ -61,6 +73,7 @@ class TeamForm extends Component {
                                         placeholder="Insert team name"
                                         label="Team name"
                                         required
+                                        validator
                                         value={name}
                                         onChange={e => this.handleInputChange(e, 'name')}
                                     />
@@ -69,7 +82,7 @@ class TeamForm extends Component {
                                     <Input
                                         label="Description"
                                         multiline
-                                        rows={4}
+                                        rows={11}
                                         value={description}
                                         onChange={e => this.handleInputChange(e, 'description')}
                                     />
@@ -120,6 +133,13 @@ class TeamForm extends Component {
                                         onChange={(e, values) => this.handleFormChange(values, 'tags')}
                                     />
                                 </Grid>
+                                <Grid item>
+                                    <Button variant="contained" fullWidth onClick={() => this.validateSave()}>
+                                        <Typography variant="subtitle1">
+                                            Save
+                                        </Typography>
+                                    </Button>
+                                </Grid>
                             </Grid>
                         </Grid>
                     </Box>
@@ -130,4 +150,4 @@ class TeamForm extends Component {
 
 }
 
-export default TeamForm;
+export default withSnackbar(TeamForm, defaultToastConfig);
