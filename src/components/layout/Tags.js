@@ -1,18 +1,11 @@
 import React from 'react';
 import {createMuiTheme, TextField, Typography} from "@material-ui/core";
-import {makeStyles} from "@material-ui/core/styles";
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Chip from "@material-ui/core/Chip";
 import Box from "@material-ui/core/Box";
 import ClearIcon from '@material-ui/icons/Clear';
 import {ThemeProvider} from "@material-ui/styles";
 import useTheme from "@material-ui/core/styles/useTheme";
-
-const useStyles = makeStyles(theme => ({
-    root: {
-
-    },
-}));
 
 const getMuiTheme = (theme) =>
     createMuiTheme({
@@ -44,9 +37,7 @@ const getMuiTheme = (theme) =>
     });
 
 const Tags = (props) => {
-    const classes = useStyles();
     const theme = useTheme();
-
     return (
         <ThemeProvider theme={getMuiTheme(theme)}>
             <Box mb={0.5}>
@@ -57,7 +48,6 @@ const Tags = (props) => {
             <Autocomplete
                 {...props}
                 multiple
-                className={classes.root}
                 options={[]}
                 freeSolo
                 multiline
@@ -79,7 +69,7 @@ const Tags = (props) => {
                         {...params}
                         color="secondary"
                         variant="outlined"
-                        placeholder={props.value.length === 0 && props.placeholder}
+                        // placeholder={props.value.length === 0 && props.placeholder}
                     />
                 )}
             />

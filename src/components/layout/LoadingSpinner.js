@@ -1,6 +1,5 @@
 import {withStyles} from "@material-ui/core";
 import useTheme from "@material-ui/core/styles/useTheme";
-import theme from "../../Theme";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 

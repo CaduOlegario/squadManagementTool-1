@@ -5,11 +5,8 @@ import TableCell from "@material-ui/core/TableCell";
 import Typography from "@material-ui/core/Typography";
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
-import {
-    createMuiTheme,
-    MuiThemeProvider,
-    withStyles
-} from "@material-ui/core/styles";import Tooltip from "@material-ui/core/Tooltip";
+import {createMuiTheme, MuiThemeProvider, withStyles} from "@material-ui/core/styles";
+import Tooltip from "@material-ui/core/Tooltip";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import AddIcon from '@material-ui/icons/Add';
@@ -42,13 +39,25 @@ const getMuiTheme = (theme) =>
             },
             MUIDataTable: {
                 paper: {
-                    padding: "0 20px",
                     height: "100%",
                     borderRadius: "14px"
                 },
-                responsiveScroll: {
-                    maxHeight: 'none',
-                }
+                responsiveScrollFullHeight: {
+                    padding: "0 20px",
+                    height: "82% !important",
+                    overflowY: "auto",
+                    '&::-webkit-scrollbar': {
+                        width: '0'
+                    },
+                    '&::-webkit-scrollbar-track': {
+                        boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+                        webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)'
+                    },
+                    '&::-webkit-scrollbar-thumb': {
+                        backgroundColor: 'rgba(0,0,0,.1)',
+                        outline: '1px solid slategrey'
+                    }
+                },
             },
             MuiTableHead: {
                 root: {
@@ -64,7 +73,8 @@ const getMuiTheme = (theme) =>
             },
             MuiToolbar: {
                 root: {
-                    padding: "14px 16px 0 !important"
+                    padding: "9px 35px 13px !important",
+                    borderBottom: "1px solid #ececec",
                 }
             },
 
@@ -143,29 +153,27 @@ const Table = (props) => {
             <Typography variant="h1"> {props.title} </Typography>
         </div>,
         options: {
-            rowsPerPage: 7,
-            rowsPerPageOptions: [7],
             print: false,
             filter: false,
             download: false,
             search: false,
             viewColumns: false,
             rowHover: false,
+            pagination: false,
             selectableRows: "none",
-            responsive: "vertical",
-            tableBodyHeight: `calc(100% - 141px)`,
-            tableBodyMaxHeight: '100%',
+            responsive: "scrollFullHeight",
+            fixedHeader: true,
             elevation: 1,
             customRowRender: (data) => customRowRenderLogic(data, classes),
             customToolbar: ({displayData}) => {
-              return <div>
-                  {/*<Button variant="contained">*/}
-                  {/*    <AddIcon style={{fontSize: "1.5rem"}}/>*/}
-                  {/*</Button>*/}
-                  <Link component={Button} to="/form">
-                      <AddIcon style={{fontSize: "1.5rem"}}/>
-                  </Link>
-              </div>
+                return <div>
+                    {/*<Button variant="contained">*/}
+                    {/*    <AddIcon style={{fontSize: "1.5rem"}}/>*/}
+                    {/*</Button>*/}
+                    <Link component={Button} to="/form">
+                        <AddIcon style={{fontSize: "1.5rem"}}/>
+                    </Link>
+                </div>
             },
             ...props.options,
         }

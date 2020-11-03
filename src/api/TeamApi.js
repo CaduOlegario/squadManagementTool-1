@@ -7,65 +7,56 @@ import React from "react";
 class TeamApi {
 
     static getTeams() {
-        // let data = {
-        //     "companyCnpj": document,
-        // };
-        //
-        // return axios({
-        //     method: httpMethods.REQUEST_METHOD_GET,
-        //     url: apiEndpoints.TEAM_LIST_ENDPOINT + "1",
-        //     headers: {'Content-Type': contentTypes.CONTENT_TYPE_APPLICATION_JSON,
-        //         'X-RapidAPI-Key': ''},
-        // }).then(response => {
-        //     return response.teams;
-        // }).catch(error => {
-        //     let status = error.api.error;
-        //     return status;
-        //     // throw error;
-        // });
-
-            const data = {
-                api: {
-                    teams: [
-                        {
-                            "team_id": 541,
-                            "name": "Real Madrid",
-                            "code": null,
-                            "logo": "https://media.api-sports.io/football/teams/541.png",
-                            "is_national": false,
-                            "country": "Spain",
-                            "founded": 1902,
-                            "venue_name": "Estadio Santiago Bernabéu",
-                            "venue_surface": "grass",
-                            "venue_address": "Avenida de Concha Espina 1, Chamartín",
-                            "venue_city": "Madrid",
-                            "venue_capacity": 85454
-                        },
-                        {
-                            "team_id": 542,
-                            "name": "Mercedes",
-                            "code": null,
-                            "logo": "https://media.api-sports.io/football/teams/541.png",
-                            "is_national": false,
-                            "country": "Spain",
-                            "founded": 1902,
-                            "venue_name": "Estadio Santiago Bernabéu",
-                            "venue_surface": "grass",
-                            "venue_address": "Avenida de Concha Espina 1, Chamartín",
-                            "venue_city": "Madrid",
-                            "venue_capacity": 85454
-                        }
-                    ]
-                }
-            };
+        return axios({
+            method: httpMethods.REQUEST_METHOD_GET,
+            url: apiEndpoints.TEAM_LIST_ENDPOINT,
+            headers: {
+                'Content-Type': contentTypes.CONTENT_TYPE_APPLICATION_JSON,
+                "X-RapidAPI-Key": "aa3db0366b39f83f50947f8d33467162"
+            },
+        }).then(response => {
+            return response;
+        }).catch(error => {
+            return "Unreachable API";
+        });
+    }
 
 
-            return new Promise((resolve, reject) =>
-                setTimeout(() => {
-                    resolve(data)
-                }, 5000)
-            );
+    static getPlayers() {
+        return axios({
+            method: httpMethods.REQUEST_METHOD_GET,
+            url: apiEndpoints.PLAYER_LIST_ENDPOINT,
+            headers: {
+                'Content-Type': contentTypes.CONTENT_TYPE_APPLICATION_JSON,
+                "X-RapidAPI-Key": "aa3db0366b39f83f50947f8d33467162"
+            },
+        }).then(response => {
+            return response;
+        }).catch(error => {
+            return "Unreachable API";
+        });
+    }
 
+    // Mock Api Call as football-api free version doesn't support inserting teams
+    static saveTeam(team) {
+
+        return axios({
+            method: httpMethods.REQUEST_METHOD_POST,
+            url: apiEndpoints.MOCK_INSERT_ENDPOINT + '?mocky-delay=100ms',
+            headers: {
+                'Content-Type': contentTypes.CONTENT_TYPE_APPLICATION_JSON,
+                "X-RapidAPI-Key": "aa3db0366b39f83f50947f8d33467162"
+            },
+            data: JSON.stringify(team)
+        }).then(response => {
+            return response.data.response;
+        }).catch(error => {
+            debugger;
+            let status = error.response.status;
+            if (status == 400 || status == 404 || status == 500)
+                return error.response.data;
+            throw error;
+        });
     }
 
     //

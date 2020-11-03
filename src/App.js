@@ -10,31 +10,31 @@ import SnackbarProvider from 'react-simple-snackbar'
 
 function App() {
 
-  const currentUser = {
-    name: "John Doe"
-  };
+    const currentUser = {
+        name: "John Doe"
+    };
 
-  return (
-      <Router>
-          <ThemeProvider theme={theme}>
-              <Box height="100vh" display="flex" flexDirection="column">
-                  <Box>
-                      <Header username={currentUser.name}/>
-                  </Box>
-                  <Box flex={1} overflow="auto" style={{display: "flex", alignItems: "stretch"}}>
-                      <SnackbarProvider>
-                          <div style={{width: "100%", padding: "40px"}}>
+    return (
+        <Router>
+            <ThemeProvider theme={theme}>
+                <Box height="100vh" display="flex" flexDirection="column">
+                    <Box>
+                        <Header username={currentUser.name}/>
+                    </Box>
+                    <Box flex={1} overflow="auto" style={{display: "flex", alignItems: "stretch", overflow: "hidden"}}>
+                        <SnackbarProvider>
+                            <div style={{width: "100%", padding: "40px"}}>
                                 <Routes />
-                          </div>
-                      </SnackbarProvider>
-                  </Box>
-                  <Box>
-                      <Footer/>
-                  </Box>
-              </Box>
-          </ThemeProvider>
-      </Router>
-  );
+                            </div>
+                        </SnackbarProvider>
+                    </Box>
+                    <Box>
+                        <Footer/>
+                    </Box>
+                </Box>
+            </ThemeProvider>
+        </Router>
+    );
 }
 
 export default App;

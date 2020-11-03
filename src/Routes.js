@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import Dashboard from "./components/pages/Dashboard";
 import TeamForm from "./components/pages/TeamForm";
 

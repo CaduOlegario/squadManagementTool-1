@@ -1,90 +1,78 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import Paper from "@material-ui/core/Paper/Paper";
 import PaperTitle from "../layout/PaperTitle";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Input from "../layout/Input";
 import {Typography} from "@material-ui/core";
-import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
 import Tags from "../layout/Tags";
 import Button from "../layout/Button";
-import { withSnackbar } from 'react-simple-snackbar'
 import defaultToastConfig from "../../utils/ToastUtils";
+import {Controller, useForm} from "react-hook-form";
+import {useHistory} from "react-router-dom";
+import LoadingSpinner from "../layout/LoadingSpinner";
+import StringUtils from "../../utils/StringUtils";
+import TeamApi from "../../api/TeamApi";
+import {useSnackbar} from 'react-simple-snackbar'
 
-class TeamForm extends Component {
+const TeamForm = () => {
+    const [showLoadingSpinner, setShowLoadingSpinner] = useState(false);
+    const history = useHistory();
+    const [openSnackbar, closeSnackbar] = useSnackbar(defaultToastConfig);
+    const {register, handleSubmit, control, errors, reset} = useForm({shouldFocusError: false});
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            showLoadingSpinner: false,
-            team: {
-                name: "",
-                website: "",
-                description: "",
-                type: null,
-                tags: []
+
+    const saveTeam = (value) => {
+        setShowLoadingSpinner(true);
+
+        TeamApi.saveTeam(value).then(response => {
+            if(response.success) {
+                openSnackbar(response.message);
+                setShowLoadingSpinner(false);
+                reset();
+                setTimeout(() => history.push("/"), 2000);
+            } else {
+                openSnackbar(response.message);
             }
-        };
-    }
-
-    handleInputChange = (event, type) => {
-        const value = event.target.value
-        this.handleFormChange(value, type);
+        }, error => {
+            openSnackbar("Error when trying to save team");
+        });
     };
 
-    handleFormChange = (value, type) => {
-        this.setState({
-            ...this.state,
-            team: {
-                ...this.state.team,
-                [type]: value,
-            }
-        })
-    };
 
-    validateSave = () => {
-        const { openSnackbar } = this.props;
-        const {name, website, type} = this.state.team;
-        if (!name || !website || !type) {
-            openSnackbar("Name and Website are required")
-        }
-
-    };
-
-    render() {
-        const {name, website, description, type, tags} = this.state.team;
-
-        return (
-            <React.Fragment>
-                <Paper elevation={1} style={{height: "100%"}}>
-                    <PaperTitle title="Create your team"/>
-                    <Box mr={11} ml={11}>
-                        <Box p={4} mb={3} textAlign="center" fontWeight={600} style={{color: "rgb(149,149,149)"}}>
-                            TEAM INFORMATION
-                        </Box>
+    return (
+        <React.Fragment>
+            <Paper elevation={1} style={{height: "100%"}}>
+                <PaperTitle title="Create your team"/>
+                <Box mr={11} ml={11}>
+                    <Box p={4} mb={3} textAlign="center" fontWeight={600} style={{color: "rgb(149,149,149)"}}>
+                        TEAM INFORMATION
+                    </Box>
+                    <form onSubmit={handleSubmit((value) => {saveTeam(value)})}>
                         <Grid container spacing={4} justify="space-evenly">
                             <Grid item container direction="column" spacing={2} xs={5}>
                                 <Grid item>
                                     <Input
+                                        inputRef={register({
+                                            required: true
+                                        })}
                                         placeholder="Insert team name"
                                         label="Team name"
-                                        required
+                                        name="name"
+                                        error={!!errors.name}
                                         validator
-                                        value={name}
-                                        onChange={e => this.handleInputChange(e, 'name')}
                                     />
                                 </Grid>
                                 <Grid item>
                                     <Input
                                         label="Description"
+                                        name="description"
                                         multiline
                                         rows={11}
-                                        value={description}
-                                        onChange={e => this.handleInputChange(e, 'description')}
+                                        inputRef={register}
                                     />
                                 </Grid>
                             </Grid>
@@ -92,49 +80,51 @@ class TeamForm extends Component {
                                 <Grid item>
                                     <Input
                                         label="Team website"
-                                        required
-                                        validate="website"
-                                        value={website}
+                                        name="website"
+                                        error={!!errors.website}
+                                        inputRef={register({
+                                            required: true,
+                                            validate: value => StringUtils.validateUrl(value)
+                                        })}
                                         placeholder="http://myteam.com"
-                                        onChange={e => this.handleInputChange(e, 'website')}
                                     />
                                 </Grid>
                                 <Grid item>
-                                    <FormControl component="fieldset">
-                                        <Box mb={0.5}>
-                                            <Typography variant="subtitle1">
-                                                Team type
-                                            </Typography>
-                                        </Box>
-                                        <RadioGroup row aria-label="gender" name="gender1"
-                                                    value={type}
-                                                    onChange={e => this.handleInputChange(e, 'type')}
-                                        >
-                                            <FormControlLabel
-                                                value="real"
-                                                control={<Radio />}
-                                                label={<div>
-                                                    Real
-                                                </div>} />
-                                            <FormControlLabel
-                                                value="fantasy"
-                                                control={<Radio />}
-                                                label={<div>
-                                                    Fantasy
-                                                </div>} />
-                                        </RadioGroup>
-                                    </FormControl>
+                                    <Box mb={0.5}>
+                                        <Typography
+                                            variant="subtitle1"
+                                            color={!!errors.type ? "primary" : ""} >
+                                            Team type
+                                        </Typography>
+                                    </Box>
+                                    <Controller
+                                        as={
+                                            <RadioGroup row>
+                                                <FormControlLabel
+                                                    value="real"
+                                                    control={<Radio />}
+                                                    label="Real" />
+                                                <FormControlLabel
+                                                    value="fantasy"
+                                                    control={<Radio />}
+                                                    label="Fantasy" />
+                                            </RadioGroup>
+                                        }
+                                        rules={{required: true}}
+                                        name="type"
+                                        control={control}
+                                    />
                                 </Grid>
                                 <Grid item>
                                     <Tags
                                         label="Tags"
+                                        name="tags"
                                         placeholder="Fill with you team's tags"
-                                        value={tags}
-                                        onChange={(e, values) => this.handleFormChange(values, 'tags')}
+                                        inputRef={register}
                                     />
                                 </Grid>
                                 <Grid item>
-                                    <Button variant="contained" fullWidth onClick={() => this.validateSave()}>
+                                    <Button variant="contained" fullWidth type="submit">
                                         <Typography variant="subtitle1">
                                             Save
                                         </Typography>
@@ -142,12 +132,12 @@ class TeamForm extends Component {
                                 </Grid>
                             </Grid>
                         </Grid>
-                    </Box>
-                </Paper>
-            </React.Fragment>
-        )
-    }
+                    </form>
+                </Box>
+            </Paper>
+            <LoadingSpinner visible={showLoadingSpinner} />
+        </React.Fragment>
+    )
+};
 
-}
-
-export default withSnackbar(TeamForm, defaultToastConfig);
+export default TeamForm;
