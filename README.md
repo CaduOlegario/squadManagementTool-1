@@ -58,6 +58,8 @@ To control and validate forms, [react-hook-form](https://react-hook-form.com/) w
 
 Documentation was created using [React Styleguidist](https://react-styleguidist.js.org/) and [PropTypes](https://www.npmjs.com/package/prop-types)
 
+Tests were created with [Jest](https://jestjs.io/) and [react-test-renderer](https://reactjs.org/docs/test-renderer.html)
+
 
 **All libraries used here were selected based on general community acceptance, how well they would adapt to the current necessities and simplicity to write and read**
 
