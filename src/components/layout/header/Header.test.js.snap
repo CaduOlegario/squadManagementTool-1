@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<header
+  className="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary MuiPaper-elevation4"
+>
+  <div
+    className="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+  >
+    <div
+      className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1 MuiGrid-wrap-xs-nowrap MuiGrid-align-items-xs-center"
+    >
+      <div
+        className="MuiGrid-root MuiGrid-item"
+      >
+        <div
+          className="MuiAvatar-root MuiAvatar-circle"
+        >
+          <img
+            alt="Venturus Logo"
+            className="MuiAvatar-img"
+            src="/images/venturus_logo.png"
+          />
+        </div>
+      </div>
+      <div
+        className="MuiGrid-root MuiGrid-item"
+      >
+        <h6
+          className="MuiTypography-root MuiTypography-h6 MuiTypography-noWrap"
+        >
+          Squad Management Tool
+        </h6>
+      </div>
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+      />
+      <div
+        className="MuiGrid-root MuiGrid-item"
+      >
+        <h6
+          className="MuiTypography-root MuiTypography-h6 MuiTypography-noWrap"
+        >
+          Test User Name
+        </h6>
+      </div>
+      <div
+        className="MuiGrid-root MuiGrid-item"
+      >
+        <div
+          className="MuiAvatar-root MuiAvatar-circle MuiAvatar-colorDefault"
+        >
+          <h6
+            className="MuiTypography-root MuiTypography-h6"
+          >
+            TU
+          </h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+`;

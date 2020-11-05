@@ -29,7 +29,7 @@ const TeamForm = () => {
         setShowLoadingSpinner(true);
 
         TeamApi.saveTeam(value).then(response => {
-            if(response.success) {
+            if (response.success) {
                 openSnackbar(response.message);
                 setShowLoadingSpinner(false);
                 reset();
@@ -51,7 +51,9 @@ const TeamForm = () => {
                     <Box p={4} mb={3} textAlign="center" fontWeight={600} style={{color: "rgb(149,149,149)"}}>
                         TEAM INFORMATION
                     </Box>
-                    <form onSubmit={handleSubmit((value) => {saveTeam(value)})}>
+                    <form onSubmit={handleSubmit((value) => {
+                        saveTeam(value)
+                    })}>
                         <Grid container spacing={4} justify="space-evenly">
                             <Grid item container direction="column" spacing={2} xs={5}>
                                 <Grid item>
@@ -92,7 +94,7 @@ const TeamForm = () => {
                                     <Box mb={0.5}>
                                         <Typography
                                             variant="subtitle1"
-                                            color={!!errors.type ? "primary" : undefined} >
+                                            color={!!errors.type ? "primary" : undefined}>
                                             Team type
                                         </Typography>
                                     </Box>
@@ -101,12 +103,12 @@ const TeamForm = () => {
                                             <RadioGroup row>
                                                 <FormControlLabel
                                                     value="real"
-                                                    control={<Radio />}
-                                                    label="Real" />
+                                                    control={<Radio/>}
+                                                    label="Real"/>
                                                 <FormControlLabel
                                                     value="fantasy"
-                                                    control={<Radio />}
-                                                    label="Fantasy" />
+                                                    control={<Radio/>}
+                                                    label="Fantasy"/>
                                             </RadioGroup>
                                         }
                                         rules={{required: true}}
@@ -134,7 +136,7 @@ const TeamForm = () => {
                     </form>
                 </Box>
             </Paper>
-            <LoadingSpinner visible={showLoadingSpinner} />
+            <LoadingSpinner visible={showLoadingSpinner}/>
         </React.Fragment>
     )
 };

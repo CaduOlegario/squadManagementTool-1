@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly normal input 1`] = `
+Array [
+  <div
+    className="MuiBox-root MuiBox-root-1"
+  >
+    <h6
+      className="MuiTypography-root MuiTypography-subtitle1"
+    >
+      Tags
+    </h6>
+  </div>,
+  <div
+    aria-expanded={false}
+    aria-owns={null}
+    className="MuiAutocomplete-root MuiAutocomplete-hasClearIcon"
+    label="Tags"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    onMouseDown={[Function]}
+    placeholder="Fill with you tags"
+    role="combobox"
+    rows={4}
+  >
+    <div
+      className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+    >
+      <div
+        className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorSecondary MuiOutlinedInput-colorSecondary MuiAutocomplete-inputRoot MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
+        onClick={[Function]}
+      >
+        <input
+          aria-activedescendant={null}
+          aria-autocomplete="list"
+          aria-controls={null}
+          aria-invalid={false}
+          autoCapitalize="none"
+          autoComplete="off"
+          autoFocus={false}
+          className="MuiInputBase-input MuiOutlinedInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+          disabled={false}
+          onAnimationStart={[Function]}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onMouseDown={[Function]}
+          placeholder="Fill with you tags"
+          required={false}
+          spellCheck="false"
+          type="text"
+          value=""
+        />
+        <div
+          className="MuiAutocomplete-endAdornment"
+        >
+          <button
+            aria-label="Clear"
+            className="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={-1}
+            title="Clear"
+            type="button"
+          >
+            <span
+              className="MuiIconButton-label"
+            />
+          </button>
+        </div>
+        <fieldset
+          aria-hidden={true}
+          className="PrivateNotchedOutline-root-2 MuiOutlinedInput-notchedOutline"
+          style={
+            Object {
+              "paddingLeft": 8,
+            }
+          }
+        >
+          <legend
+            className="PrivateNotchedOutline-legend-3"
+            style={
+              Object {
+                "width": 0.01,
+              }
+            }
+          >
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "&#8203;",
+                }
+              }
+            />
+          </legend>
+        </fieldset>
+      </div>
+    </div>
+  </div>,
+]
+`;

@@ -44,7 +44,7 @@ const getMuiTheme = (theme) =>
             MuiTableRow: {
                 root: {
                     '&:hover [class*="MuiTableCell-body"]': {
-                        color: theme.palette.font.main,
+                        color: theme.palette.font ? theme.palette.font.main : "rgb(177,61,124)",
                         backgroundColor: theme.palette.background.light
                     },
                 },
@@ -121,14 +121,14 @@ const styles = {
 /** Custom logic to render each row with actions */
 const customRowRenderLogic = (data, classes, setDeleteDialogOpen, setSelectedTableData) => {
     return (
-        <TableRow className={classes.tableRow}>
+        <TableRow className={classes.tableRow} key={data[0]}>
             <TableCell>
                 <Typography variant="subtitle2">{data[1]}</Typography>
             </TableCell>
             <TableCell>
                 <Box display="flex" flexDirection="row" alignItems="center">
                     <Box width="100%">
-                        <Typography variant="subtitle2" component="span" >{data[2]}</Typography>
+                        <Typography variant="subtitle2" component="span">{data[2]}</Typography>
                     </Box>
                     <Box display="flex" className={classes.actions} alignItems="center">
                         <Tooltip title="Delete" placement="top" aria-label="delete">
@@ -153,7 +153,7 @@ const customRowRenderLogic = (data, classes, setDeleteDialogOpen, setSelectedTab
 /** Function to call delete api */
 const deleteTeamApi = (id, openSnackbar, loader) => {
     const handleOpenSnackbar = (isApiSuccess) => {
-        if(isApiSuccess) {
+        if (isApiSuccess) {
             openSnackbar("Team deleted successfully");
         } else {
             openSnackbar("Team couldn't be deleted");
@@ -165,7 +165,7 @@ const deleteTeamApi = (id, openSnackbar, loader) => {
 /** Dialog for deleting a team */
 const deleteDialog = (selectedTableData, isDeleteDialogOpen, setDeleteDialogOpen, openSnackbar, loader) => {
 
-    if(!selectedTableData) return;
+    if (!selectedTableData) return;
 
     const handleClose = () => setDeleteDialogOpen(false);
 

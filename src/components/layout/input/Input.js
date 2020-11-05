@@ -37,7 +37,7 @@ const Input = (props) => {
         <ThemeProvider theme={getMuiTheme(theme)}>
             <Box mb={0.5}>
                 <Typography variant="subtitle1"
-                            color={props.error ? "primary" : undefined} >
+                            color={props.error ? "primary" : undefined}>
                     {label}
                 </Typography>
             </Box>
@@ -52,7 +52,7 @@ const Input = (props) => {
     )
 };
 
-Input.propTypes ={
+Input.propTypes = {
     /** Input title name */
     label: PropTypes.string.isRequired,
     /** Placeholder for the input */

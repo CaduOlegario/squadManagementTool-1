@@ -63,6 +63,7 @@
     "react-refresh": "^0.8.3",
     "react-router-dom": "^5.2.0",
     "react-simple-snackbar": "^1.1.10",
+    "react-test-renderer": "^17.0.1",
     "resolve": "1.18.1",
     "resolve-url-loader": "^3.1.2",
     "sass-loader": "8.0.2",
@@ -81,8 +82,8 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "styleguide": "FAST_REFRESH=false styleguidist server",
-    "styleguide:build": "styleguidist build"
+    "styleguide": "FAST_REFRESH=false styleguidist server --config config/styleguide/styleguide.config.js",
+    "styleguide:build": "styleguidist build config/styleguide/styleguide.config.js"
   },
   "eslintConfig": {
     "extends": [
@@ -155,7 +156,8 @@
       "jest-watch-typeahead/filename",
       "jest-watch-typeahead/testname"
     ],
-    "resetMocks": true
+    "resetMocks": true,
+    "snapshotResolver": "<rootDir>/config/jest/snapshotResolver.js"
   },
   "babel": {
     "presets": [

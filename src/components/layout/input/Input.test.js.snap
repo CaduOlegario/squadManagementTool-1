@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly error input 1`] = `
+Array [
+  <div
+    className="MuiBox-root MuiBox-root-6"
+  >
+    <h6
+      className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorPrimary"
+    >
+      test label
+    </h6>
+  </div>,
+  <div
+    className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+  >
+    
+    <div
+      className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorSecondary MuiOutlinedInput-colorSecondary Mui-error Mui-error MuiInputBase-fullWidth MuiInputBase-formControl"
+      onClick={[Function]}
+    >
+      <input
+        aria-invalid={true}
+        autoFocus={false}
+        className="MuiInputBase-input MuiOutlinedInput-input"
+        disabled={false}
+        onAnimationStart={[Function]}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="test placeholder"
+        required={false}
+        type="text"
+      />
+      <fieldset
+        aria-hidden={true}
+        className="PrivateNotchedOutline-root-7 MuiOutlinedInput-notchedOutline"
+        style={
+          Object {
+            "paddingLeft": 8,
+          }
+        }
+      >
+        <legend
+          className="PrivateNotchedOutline-legend-8"
+          style={
+            Object {
+              "width": 0.01,
+            }
+          }
+        >
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "&#8203;",
+              }
+            }
+          />
+        </legend>
+      </fieldset>
+    </div>
+  </div>,
+]
+`;
+
+exports[`renders correctly multiline input 1`] = `
+Array [
+  <div
+    className="MuiBox-root MuiBox-root-1"
+  >
+    <h6
+      className="MuiTypography-root MuiTypography-subtitle1"
+    >
+      test label
+    </h6>
+  </div>,
+  <div
+    className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+  >
+    
+    <div
+      className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorSecondary MuiOutlinedInput-colorSecondary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
+      onClick={[Function]}
+    >
+      <textarea
+        aria-invalid={false}
+        autoFocus={false}
+        className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+        disabled={false}
+        onAnimationStart={[Function]}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="test placeholder"
+        required={false}
+        rows={4}
+      />
+      <fieldset
+        aria-hidden={true}
+        className="PrivateNotchedOutline-root-2 MuiOutlinedInput-notchedOutline"
+        style={
+          Object {
+            "paddingLeft": 8,
+          }
+        }
+      >
+        <legend
+          className="PrivateNotchedOutline-legend-3"
+          style={
+            Object {
+              "width": 0.01,
+            }
+          }
+        >
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "&#8203;",
+              }
+            }
+          />
+        </legend>
+      </fieldset>
+    </div>
+  </div>,
+]
+`;

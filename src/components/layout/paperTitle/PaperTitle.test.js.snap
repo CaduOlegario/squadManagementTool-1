@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly normal input 1`] = `
+<div
+  className="PaperTitle-container-1"
+>
+  <h1
+    className="MuiTypography-root MuiTypography-h1"
+  >
+     
+    Test title
+     
+  </h1>
+</div>
+`;

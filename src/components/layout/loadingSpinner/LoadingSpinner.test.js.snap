@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly normal input 1`] = `
+<div>
+  <div
+    className="LoadingSpinner-loading-1"
+  >
+    <div
+      className="LoadingSpinner-box-2"
+      style={
+        Object {
+          "background": "linear-gradient(to right, #3f51b5, #303f9f)",
+        }
+      }
+    >
+      <img
+        alt="Venturus Logo"
+        className="LoadingSpinner-boxImg-3"
+        src="/images/venturus_logo.png"
+      />
+      <br />
+      <span
+        className="LoadingSpinner-text-4"
+      >
+        <div
+          className="MuiCircularProgress-root LoadingSpinner-loader-5 MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
+          role="progressbar"
+          style={
+            Object {
+              "height": 22,
+              "width": 22,
+            }
+          }
+        >
+          <svg
+            className="MuiCircularProgress-svg"
+            viewBox="22 22 44 44"
+          >
+            <circle
+              className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
+              cx={44}
+              cy={44}
+              fill="none"
+              r={20.2}
+              strokeWidth={3.6}
+              style={Object {}}
+            />
+          </svg>
+        </div>
+         Carregando...
+      </span>
+    </div>
+  </div>
+</div>
+`;

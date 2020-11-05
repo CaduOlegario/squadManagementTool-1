@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<header
+  className="MuiPaper-root MuiAppBar-root MuiAppBar-positionSticky MuiAppBar-colorPrimary makeStyles-appBar-1 MuiPaper-elevation4"
+>
+  <div
+    className="MuiBox-root MuiBox-root-2"
+  >
+    <p
+      className="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter"
+    >
+      2020 - All rights reserved
+    </p>
+  </div>
+</header>
+`;

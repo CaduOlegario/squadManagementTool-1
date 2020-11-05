@@ -2,9 +2,9 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import {ThemeProvider} from '@material-ui/core/styles';
 import Footer from "components/layout/footer/Footer";
 import Header from "components/layout/header/Header";
-import theme from "Theme";
+import theme from "theme/Theme";
 import React from "react";
-import Routes from "Routes";
+import Routes from "routes/Routes";
 import Box from "@material-ui/core/Box";
 import SnackbarProvider from 'react-simple-snackbar'
 
@@ -25,7 +25,7 @@ function App() {
                     <Box flex={1} overflow="auto" style={{display: "flex", alignItems: "stretch"}}>
                         <SnackbarProvider>
                             <div style={{width: "100%", padding: "40px"}}>
-                                <Routes />
+                                <Routes/>
                             </div>
                         </SnackbarProvider>
                     </Box>

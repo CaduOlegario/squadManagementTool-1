@@ -108,14 +108,14 @@ const renderPlayer = (player, classes) => {
             <div className={classes.avatarContainer}>
                 <div className={`${classes.avatar} ${avatarClass}`}>
                     <Tooltip title={name}>
-                        <Avatar >
+                        <Avatar>
                             <Typography variant="h6" className={classes.avatarName}>
                                 {StringUtils.getNameInitials(name)}
                             </Typography>
                         </Avatar>
                     </Tooltip>
                 </div>
-                <div className={classes.percentage} >
+                <div className={classes.percentage}>
                     <Typography variant="h6" style={{lineHeight: "1.6rem"}}>
                         {percentage}%
                     </Typography>
@@ -128,7 +128,7 @@ const renderPlayer = (player, classes) => {
 const renderPlayers = (props) => {
     const {classes, data, teamCount} = props;
 
-    if(!data.length) {
+    if (!data.length) {
         return;
     }
 
@@ -136,13 +136,13 @@ const renderPlayers = (props) => {
 
     const leastPickedPlayer = playersOrderedByAppearances[0];
     const leastPickedPlayerConfig = {
-        percentage: parseInt((leastPickedPlayer.appearances * 100 ) / teamCount),
+        percentage: parseInt((leastPickedPlayer.appearances * 100) / teamCount),
         name: leastPickedPlayer.name,
         title: "Least picked player",
         avatarClass: classes.leastPlayer,
     };
 
-    const mostPickedPlayer = playersOrderedByAppearances[playersOrderedByAppearances.length-1];
+    const mostPickedPlayer = playersOrderedByAppearances[playersOrderedByAppearances.length - 1];
     const mostPickedPlayerConfig = {
         percentage: parseInt((mostPickedPlayer.appearances * 100) / teamCount),
         name: mostPickedPlayer.name,
@@ -157,7 +157,7 @@ const renderPlayers = (props) => {
         </React.Fragment>
     )
 
-}
+};
 
 const PlayerPickRank = (props) => {
     const {classes} = props;
@@ -166,7 +166,7 @@ const PlayerPickRank = (props) => {
     return (
         <MuiThemeProvider theme={getMuiTheme(theme)}>
             <Paper elevation={1} className={classes.paper}>
-                <div className={classes.whiteCircle} />
+                <div className={classes.whiteCircle}/>
 
                 <Grid container className={classes.container}>
                     {renderPlayers(props)}
@@ -176,7 +176,7 @@ const PlayerPickRank = (props) => {
     )
 };
 
-Input.propTypes ={
+Input.propTypes = {
     data: PropTypes.array,
     teamCount: PropTypes.number,
     classes: PropTypes.object.isRequired

@@ -2,7 +2,6 @@ import * as apiEndpoints from 'constants/apiEndpoints';
 import * as httpMethods from 'constants/httpMethods';
 import * as contentTypes from 'constants/contentTypes';
 import axios from 'axios';
-import {useSnackbar} from "react-simple-snackbar";
 
 class TeamApi {
 
@@ -12,7 +11,7 @@ class TeamApi {
             url: apiEndpoints.TEAM_LIST_ENDPOINT,
             headers: {
                 'Content-Type': contentTypes.CONTENT_TYPE_APPLICATION_JSON,
-                "X-RapidAPI-Key": "a4399456d442759ce8d457e1b34aeff5"
+                "X-RapidAPI-Key": "b387da586e3e6b93bc87995b6ef955c7"
             },
         }).then(response => {
             return response.data.response;
@@ -27,7 +26,7 @@ class TeamApi {
             url: apiEndpoints.PLAYER_LIST_ENDPOINT,
             headers: {
                 'Content-Type': contentTypes.CONTENT_TYPE_APPLICATION_JSON,
-                "X-RapidAPI-Key": "a4399456d442759ce8d457e1b34aeff5"
+                "X-RapidAPI-Key": "b387da586e3e6b93bc87995b6ef955c7"
             },
         }).then(response => {
             return response.data.response;
@@ -44,7 +43,7 @@ class TeamApi {
             url: apiEndpoints.MOCK_INSERT_ENDPOINT + '?mocky-delay=100ms',
             headers: {
                 'Content-Type': contentTypes.CONTENT_TYPE_APPLICATION_JSON,
-                "X-RapidAPI-Key": "a4399456d442759ce8d457e1b34aeff5"
+                "X-RapidAPI-Key": "b387da586e3e6b93bc87995b6ef955c7"
             },
             data: JSON.stringify(team)
         }).then(response => {
@@ -61,7 +60,7 @@ class TeamApi {
             url: apiEndpoints.MOCK_DELETE_ENDPOINT + '?mocky-delay=100ms',
             headers: {
                 'Content-Type': contentTypes.CONTENT_TYPE_APPLICATION_JSON,
-                "X-RapidAPI-Key": "a4399456d442759ce8d457e1b34aeff5"
+                "X-RapidAPI-Key": "b387da586e3e6b93bc87995b6ef955c7"
             },
             data: JSON.stringify(team)
         }).then(response => {

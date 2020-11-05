@@ -57,9 +57,9 @@ const Dashboard = () => {
 
         const openSnackbarMultiple = (type, boolean) => {
             results[type] = boolean;
-            if(results.teams === null || results.players === null ) {
+            if (results.teams === null || results.players === null) {
                 return;
-            };
+            }
             openSnackbar(results.teams && results.players ? "Squads data retrieved successfully" : "Error retrieving squads data");
         };
 
@@ -69,7 +69,7 @@ const Dashboard = () => {
 
     return (
         <React.Fragment>
-            <Grid container justify="center" spacing={6} style={{height: "calc(100% + 48px)" }}>
+            <Grid container justify="center" spacing={6} style={{height: "calc(100% + 48px)"}}>
                 <Grid item xs={12} lg={6} style={{maxHeight: "100%"}}>
                     <TeamsTable data={teams} loader={setDeleteApiLoading}/>
                 </Grid>
@@ -84,7 +84,7 @@ const Dashboard = () => {
                     </Grid>
                 </Grid>
             </Grid>
-            <LoadingSpinner visible={teamsApiLoading || playersApiLoading || deleteApiLoading} />
+            <LoadingSpinner visible={teamsApiLoading || playersApiLoading || deleteApiLoading}/>
         </React.Fragment>
     )
 };

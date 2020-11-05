@@ -1,19 +1,19 @@
 import React from "react";
 import {Route, Switch} from "react-router-dom";
-import Dashboard from "./components/pages/Dashboard";
-import TeamForm from "./components/pages/TeamForm";
+import Dashboard from "../components/pages/Dashboard";
+import TeamForm from "../components/pages/TeamForm";
 
 export default function Routes() {
     return (
         <Switch>
             <Route exact path="/">
-                <Dashboard />
+                <Dashboard/>
             </Route>
             <Route path="/form">
-                <TeamForm />
+                <TeamForm/>
             </Route>
             <Route>
-                <Dashboard />
+                <Dashboard/>
             </Route>
         </Switch>
     );

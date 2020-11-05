@@ -44,7 +44,7 @@ const Tags = (props) => {
     return (
         <ThemeProvider theme={getMuiTheme(theme)}>
             <Box mb={0.5}>
-                <Typography variant="subtitle1" >
+                <Typography variant="subtitle1">
                     {props.label}
                 </Typography>
             </Box>
@@ -54,7 +54,7 @@ const Tags = (props) => {
                 options={[]}
                 freeSolo
                 rows={4}
-                closeIcon={<React.Fragment />}
+                closeIcon={<React.Fragment/>}
                 renderTags={(value, getTagProps) =>
                     value.map((option, index) => (
                         <Chip
@@ -62,8 +62,8 @@ const Tags = (props) => {
                             color="primary"
                             size="small"
                             clickable
-                            deleteIcon={<ClearIcon />}
-                            {...getTagProps({ index })} />
+                            deleteIcon={<ClearIcon/>}
+                            {...getTagProps({index})} />
                     ))
                 }
                 renderInput={(params) => (
@@ -80,7 +80,7 @@ const Tags = (props) => {
 };
 
 
-Input.propTypes ={
+Input.propTypes = {
     /** Input's label */
     label: PropTypes.string.isRequired,
     /** Input's placeholder */

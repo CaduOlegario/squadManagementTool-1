@@ -34,7 +34,7 @@ const TeamsTable = (props) => {
     );
 };
 
-Input.propTypes ={
+Input.propTypes = {
     data: PropTypes.array,
     loader: PropTypes.func
 };
