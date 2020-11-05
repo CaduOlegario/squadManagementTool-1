@@ -10,11 +10,11 @@ class TeamApi {
             method: httpMethods.REQUEST_METHOD_GET,
             url: apiEndpoints.TEAM_LIST_ENDPOINT,
             headers: {
-                'Content-Type': contentTypes.CONTENT_TYPE_APPLICATION_JSON,
-                "X-RapidAPI-Key": "b387da586e3e6b93bc87995b6ef955c7"
+                "X-Auth-Token": "b84e1e7b61af40bf9af9df64f2a80c24",
             },
         }).then(response => {
-            return response.data.response;
+            debugger;
+            return response.data.teams;
         }).catch(error => {
             return "Unreachable API";
         });
@@ -25,11 +25,10 @@ class TeamApi {
             method: httpMethods.REQUEST_METHOD_GET,
             url: apiEndpoints.PLAYER_LIST_ENDPOINT,
             headers: {
-                'Content-Type': contentTypes.CONTENT_TYPE_APPLICATION_JSON,
-                "X-RapidAPI-Key": "b387da586e3e6b93bc87995b6ef955c7"
+                "X-Auth-Token": "b84e1e7b61af40bf9af9df64f2a80c24",
             },
         }).then(response => {
-            return response.data.response;
+            return response.data.squad;
         }).catch(error => {
             return "Unreachable API";
         });
@@ -42,8 +41,7 @@ class TeamApi {
             method: httpMethods.REQUEST_METHOD_POST,
             url: apiEndpoints.MOCK_INSERT_ENDPOINT + '?mocky-delay=100ms',
             headers: {
-                'Content-Type': contentTypes.CONTENT_TYPE_APPLICATION_JSON,
-                "X-RapidAPI-Key": "b387da586e3e6b93bc87995b6ef955c7"
+                "X-Auth-Token": "b84e1e7b61af40bf9af9df64f2a80c24",
             },
             data: JSON.stringify(team)
         }).then(response => {
@@ -59,8 +57,7 @@ class TeamApi {
             method: httpMethods.REQUEST_METHOD_DELETE,
             url: apiEndpoints.MOCK_DELETE_ENDPOINT + '?mocky-delay=100ms',
             headers: {
-                'Content-Type': contentTypes.CONTENT_TYPE_APPLICATION_JSON,
-                "X-RapidAPI-Key": "b387da586e3e6b93bc87995b6ef955c7"
+                "X-Auth-Token": "b84e1e7b61af40bf9af9df64f2a80c24",
             },
             data: JSON.stringify(team)
         }).then(response => {

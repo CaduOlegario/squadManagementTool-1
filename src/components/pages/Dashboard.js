@@ -11,11 +11,12 @@ import TeamApi from "api/TeamApi";
 import {HandleApi} from "utils/apiUtils";
 
 const getTeamsFromApi = (setData, setLoading, openSnackbar) => {
+    debugger;
     const saveFormattedTeams = (data) => {
         const filteredData = data.map(item => ({
-            id: item.team.id,
-            name: item.team.name,
-            description: item.team.name + " squad"
+            id: item.id,
+            name: item.name,
+            description: item.name + " squad"
         }));
         setData(filteredData);
     };
@@ -28,9 +29,10 @@ const getTeamsFromApi = (setData, setLoading, openSnackbar) => {
 const getPlayersFromApi = (setData, setLoading, openSnackbar) => {
     const saveFormattedPlayers = (data) => {
         const filteredData = data.map(item => ({
-            id: item.player.id,
-            name: item.player.name,
-            appearances: item.statistics.length
+            id: item.id,
+            name: item.name,
+            // Generate random number as api is blocked
+            appearances: Math.abs(0 + Math.floor((0 - 10) * Math.random()))
         }));
         setData(filteredData);
     };

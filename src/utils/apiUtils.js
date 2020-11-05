@@ -1,6 +1,7 @@
 export const HandleApi = (api, handleLoader, setData, sendNotification) => {
     handleLoader(true);
     api().then(response => {
+        debugger;
         if (response) {
             setData(response);
             handleLoader(false);

@@ -1,5 +1,17 @@
 # Squad Management Tool
 
+*Obs: In the last day of the project, the football-api account i was using got blocked for some reason,
+ and i was unable to create a new account on the site, so in the last commit i changed the api to another free one,
+ this one doesn't show a relationship between players and teams, so the value refering to the number of times
+ a player is picked by a team is randomized*
+
+## Preparing for development / deployment
+
+Before developing or deploying the code, you need to install the dependencies using the command
+
+### `npm install`
+
+It will prepare all the dependencies necessary 
 
 ## Developing the code
 

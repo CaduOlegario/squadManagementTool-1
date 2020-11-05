@@ -1,6 +1,6 @@
 import StringUtils from "./StringUtils";
 
-test('Test get initials from name', () => {
+test('get initials from name', () => {
     expect(StringUtils.getNameInitials("João Silva de Oliveira Neto")).toBe("JS");
 });
 
