@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import MUIDataTable from "mui-datatables";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
@@ -13,6 +13,17 @@ import useTheme from "@material-ui/core/styles/useTheme";
 import {useHistory} from "react-router-dom";
 import PropTypes from "prop-types";
 import Button from "../button/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogActions from "@material-ui/core/DialogActions";
+import {default as MaterialButton} from "@material-ui/core/Button";
+import {useSnackbar} from "react-simple-snackbar";
+import defaultToastConfig from "utils/ToastUtils";
+import {HandleDeleteApi} from "utils/apiUtils";
+import TeamApi from "api/TeamApi";
+
 
 const getMuiTheme = (theme) =>
     createMuiTheme({
@@ -90,18 +101,6 @@ const getMuiTheme = (theme) =>
                     fontSize: "1.2rem"
                 }
             },
-            MuiButton: {
-                text: {
-                    padding: "5px 0",
-                    minWidth: "40px",
-                    borderRadius: "12px",
-                    background: "linear-gradient(to bottom, " + theme.palette.primary.main + ", " + theme.palette.secondary.main + ")"
-                },
-                label: {
-                    color: "white",
-                    fontSize: "1.7rem"
-                }
-            }
         }
     });
 
@@ -120,20 +119,26 @@ const styles = {
 };
 
 /** Custom logic to render each row with actions */
-const customRowRenderLogic = (data, classes) => {
+const customRowRenderLogic = (data, classes, setDeleteDialogOpen, setSelectedTableData) => {
     return (
         <TableRow className={classes.tableRow}>
             <TableCell>
-                <Typography variant="subtitle2">{data[0]}</Typography>
+                <Typography variant="subtitle2">{data[1]}</Typography>
             </TableCell>
             <TableCell>
                 <Box display="flex" flexDirection="row" alignItems="center">
                     <Box width="100%">
-                        <Typography variant="subtitle2" component="span" >{data[1]}</Typography>
+                        <Typography variant="subtitle2" component="span" >{data[2]}</Typography>
                     </Box>
                     <Box display="flex" className={classes.actions} alignItems="center">
                         <Tooltip title="Delete" placement="top" aria-label="delete">
-                            <DeleteIcon className={classes.actionIcon}></DeleteIcon>
+                            <DeleteIcon
+                                className={classes.actionIcon}
+                                onClick={() => {
+                                    setSelectedTableData(data);
+                                    setDeleteDialogOpen(true);
+                                }}
+                            ></DeleteIcon>
                         </Tooltip>
                         <Tooltip title="Edit" placement="top" aria-label="Edit">
                             <EditIcon className={classes.actionIcon}></EditIcon>
@@ -145,12 +150,61 @@ const customRowRenderLogic = (data, classes) => {
     );
 };
 
+/** Function to call delete api */
+const deleteTeamApi = (id, openSnackbar, loader) => {
+    const handleOpenSnackbar = (isApiSuccess) => {
+        if(isApiSuccess) {
+            openSnackbar("Team deleted successfully");
+        } else {
+            openSnackbar("Team couldn't be deleted");
+        }
+    };
+    return HandleDeleteApi(TeamApi.deleteTeam, id, loader, handleOpenSnackbar);
+};
+
+/** Dialog for deleting a team */
+const deleteDialog = (selectedTableData, isDeleteDialogOpen, setDeleteDialogOpen, openSnackbar, loader) => {
+
+    if(!selectedTableData) return;
+
+    const handleClose = () => setDeleteDialogOpen(false);
+
+    return (
+        <Dialog
+            open={isDeleteDialogOpen}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+        >
+            <DialogTitle id="alert-dialog-title">Team delete</DialogTitle>
+            <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                    Are you sure you wish to delete {selectedTableData[1]}'s team?
+                </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+                <MaterialButton onClick={handleClose}>
+                    Cancel
+                </MaterialButton>
+                <MaterialButton onClick={() => {
+                    deleteTeamApi(selectedTableData[0], openSnackbar, loader);
+                    handleClose();
+                }} color="primary" autoFocus>
+                    Delete
+                </MaterialButton>
+            </DialogActions>
+        </Dialog>
+    )
+};
+
 /** Table component aligned with prototype styling.  Accepts the same props from [MUI-Datatables](https://github.com/gregnb/mui-datatables) */
 const Table = (props) => {
-    const {classes, title, options, showButton, ...dataTablePropsRest} = props;
+    const {classes, title, options, showButton, loader, ...dataTablePropsRest} = props;
+    const [isDeleteDialogOpen, setDeleteDialogOpen] = useState(false);
+    const [selectedTableData, setSelectedTableData] = useState(null);
+    const [openSnackbar] = useSnackbar(defaultToastConfig);
     const theme = useTheme();
     const history = useHistory();
-
 
     const dataTableProps = {
         ...dataTablePropsRest,
@@ -169,15 +223,12 @@ const Table = (props) => {
             responsive: "standard",
             fixedHeader: true,
             elevation: 1,
-            customRowRender: (data) => customRowRenderLogic(data, classes),
+            customRowRender: (data) => customRowRenderLogic(data, classes, setDeleteDialogOpen, setSelectedTableData),
             customToolbar: ({displayData}) => {
                 return <div>
                     {showButton && <Button variant="contained" onClick={() => history.push("/form")}>
                         <AddIcon style={{fontSize: "1.5rem"}}/>
                     </Button>}
-                    {/*<Link component={Button} to="/form">*/}
-                    {/*    <AddIcon style={{fontSize: "1.5rem"}}/>*/}
-                    {/*</Link>*/}
                 </div>
             },
             ...options,
@@ -187,6 +238,7 @@ const Table = (props) => {
     return (
         <MuiThemeProvider theme={getMuiTheme(theme)}>
             <MUIDataTable {...dataTableProps} />
+            {deleteDialog(selectedTableData, isDeleteDialogOpen, setDeleteDialogOpen, openSnackbar, loader)}
         </MuiThemeProvider>
     );
 };

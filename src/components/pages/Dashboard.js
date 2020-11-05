@@ -46,6 +46,7 @@ const Dashboard = () => {
     const [players, setPlayers] = useState([]);
     const [teamsApiLoading, setTeamsApiLoading] = useState(false);
     const [playersApiLoading, setPlayersApiLoading] = useState(false);
+    const [deleteApiLoading, setDeleteApiLoading] = useState(false);
     const [openSnackbar] = useSnackbar(defaultToastConfig);
 
     useEffect(() => {
@@ -70,7 +71,7 @@ const Dashboard = () => {
         <React.Fragment>
             <Grid container justify="center" spacing={6} style={{height: "calc(100% + 48px)" }}>
                 <Grid item xs={12} lg={6} style={{maxHeight: "100%"}}>
-                    <TeamsTable data={teams}/>
+                    <TeamsTable data={teams} loader={setDeleteApiLoading}/>
                 </Grid>
                 <Grid item xs={12} lg={6} container direction="column" alignItems="stretch" style={{minHeight: "100%"}}>
                     <Grid item style={{height: "60%", paddingBottom: "3%"}}>
@@ -83,7 +84,7 @@ const Dashboard = () => {
                     </Grid>
                 </Grid>
             </Grid>
-            <LoadingSpinner visible={teamsApiLoading || playersApiLoading} />
+            <LoadingSpinner visible={teamsApiLoading || playersApiLoading || deleteApiLoading} />
         </React.Fragment>
     )
 };

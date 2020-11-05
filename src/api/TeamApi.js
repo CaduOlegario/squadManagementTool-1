@@ -2,6 +2,7 @@ import * as apiEndpoints from 'constants/apiEndpoints';
 import * as httpMethods from 'constants/httpMethods';
 import * as contentTypes from 'constants/contentTypes';
 import axios from 'axios';
+import {useSnackbar} from "react-simple-snackbar";
 
 class TeamApi {
 
@@ -19,7 +20,6 @@ class TeamApi {
             return "Unreachable API";
         });
     }
-
 
     static getPlayers() {
         return axios({
@@ -50,10 +50,24 @@ class TeamApi {
         }).then(response => {
             return response.data.response;
         }).catch(error => {
-            let status = error.response.status;
-            if (status === 400 || status === 404 || status === 500)
-                return error.response.data;
-            throw error;
+            return "Unreachable API";
+        });
+    }
+
+    // Mock Api Call as football-api free version doesn't support deleting teams
+    static deleteTeam(team) {
+        return axios({
+            method: httpMethods.REQUEST_METHOD_DELETE,
+            url: apiEndpoints.MOCK_DELETE_ENDPOINT + '?mocky-delay=100ms',
+            headers: {
+                'Content-Type': contentTypes.CONTENT_TYPE_APPLICATION_JSON,
+                "X-RapidAPI-Key": "a4399456d442759ce8d457e1b34aeff5"
+            },
+            data: JSON.stringify(team)
+        }).then(response => {
+            return response;
+        }).catch(error => {
+            return "Unreachable API";
         });
     }
 

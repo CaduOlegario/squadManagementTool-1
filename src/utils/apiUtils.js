@@ -15,3 +15,19 @@ export const HandleApi = (api, handleLoader, setData, sendNotification) => {
         sendNotification(false);
     });
 };
+
+export const HandleDeleteApi = (api, data,  handleLoader, sendNotification) => {
+    handleLoader(true);
+    api(data).then(response => {
+        if(response) {
+            handleLoader(false);
+            sendNotification(true);
+        } else {
+            handleLoader(false);
+            sendNotification(false);
+        }
+    }).catch(() => {
+        handleLoader(false);
+        sendNotification(false);
+    });
+};
