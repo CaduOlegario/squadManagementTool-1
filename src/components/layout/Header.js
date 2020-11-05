@@ -1,6 +1,6 @@
 import React from 'react';
 import {AppBar, Avatar, createMuiTheme, Grid, MuiThemeProvider, Toolbar, Typography} from "@material-ui/core";
-import StringUtils from "../../utils/StringUtils";
+import StringUtils from "utils/StringUtils";
 import useTheme from "@material-ui/core/styles/useTheme";
 
 const getMuiTheme = (theme) =>

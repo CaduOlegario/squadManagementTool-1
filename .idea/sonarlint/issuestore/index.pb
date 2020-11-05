@@ -14,3 +14,9 @@ N
 src/components/layout/Input.js,c/6/c6965873f30b53b66beb8151719d72810a0ae0cc
 A
 public/index.html,f/4/f43ecdf8d666ee908aacce037b4cd72159e4741b
+Q
+!src/components/pages/Dashboard.js,0/b/0b773497b5a41120320ea2ffd76c9eacbac4a045
+O
+src/components/layout/Footer.js,e/f/efd33d9a22078b66a8df96196dcf2ff495cf7bc6
+V
+&src/components/pages/PlayerPickRank.js,3/0/30eb9c92f7e95b3a6857bde60b275e7bffb4a90c

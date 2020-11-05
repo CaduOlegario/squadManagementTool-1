@@ -2,7 +2,7 @@ import React from "react";
 import SourceButton from "@material-ui/core/Button";
 import {createMuiTheme, MuiThemeProvider} from "@material-ui/core";
 import useTheme from "@material-ui/core/styles/useTheme";
-
+import PropTypes from "prop-types";
 
 const getMuiTheme = (theme) =>
     createMuiTheme({
@@ -27,9 +27,16 @@ const Button = (props) => {
 
     return (
         <MuiThemeProvider theme={getMuiTheme(theme)}>
-            <SourceButton {...props}/>
+            <SourceButton
+                variant="contained"
+                fullWidth
+                {...props}/>
         </MuiThemeProvider>
     )
+};
+
+Button.propTypes = {
+    type: PropTypes.string,
 };
 
 export default Button;

@@ -48,7 +48,7 @@ const LoadingSpinner = (props) => {
         visible && <div>
             <div className={classes.loading}>
                 <div className={classes.box} style={{background: "linear-gradient(to right, " + theme.palette.primary.main + ", " + theme.palette.primary.dark + ")"}}>
-                    <img className={classes.boxImg} src="/images/venturus_logo.png" />
+                    <img className={classes.boxImg} src="/images/venturus_logo.png" alt="Venturus Logo" />
                     <br/>
                     <span className={classes.text}>
                         <CircularProgress className={classes.loader} size={22} />&nbsp;Carregando...

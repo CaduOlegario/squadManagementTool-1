@@ -21,7 +21,7 @@ function App() {
                     <Box>
                         <Header username={currentUser.name}/>
                     </Box>
-                    <Box flex={1} overflow="auto" style={{display: "flex", alignItems: "stretch", overflow: "hidden"}}>
+                    <Box flex={1} overflow="auto" style={{display: "flex", alignItems: "stretch"}}>
                         <SnackbarProvider>
                             <div style={{width: "100%", padding: "40px"}}>
                                 <Routes />

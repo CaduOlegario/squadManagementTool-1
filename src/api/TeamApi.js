@@ -1,8 +1,7 @@
-import * as apiEndpoints from '../constants/apiEndpoints';
-import * as httpMethods from '../constants/httpMethods';
-import * as contentTypes from '../constants/contentTypes';
+import * as apiEndpoints from 'constants/apiEndpoints';
+import * as httpMethods from 'constants/httpMethods';
+import * as contentTypes from 'constants/contentTypes';
 import axios from 'axios';
-import React from "react";
 
 class TeamApi {
 
@@ -15,7 +14,7 @@ class TeamApi {
                 "X-RapidAPI-Key": "aa3db0366b39f83f50947f8d33467162"
             },
         }).then(response => {
-            return response;
+            return response.data.response;
         }).catch(error => {
             return "Unreachable API";
         });
@@ -31,7 +30,7 @@ class TeamApi {
                 "X-RapidAPI-Key": "aa3db0366b39f83f50947f8d33467162"
             },
         }).then(response => {
-            return response;
+            return response.data.response;
         }).catch(error => {
             return "Unreachable API";
         });
@@ -51,9 +50,8 @@ class TeamApi {
         }).then(response => {
             return response.data.response;
         }).catch(error => {
-            debugger;
             let status = error.response.status;
-            if (status == 400 || status == 404 || status == 500)
+            if (status === 400 || status === 404 || status === 500)
                 return error.response.data;
             throw error;
         });

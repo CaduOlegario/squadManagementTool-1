@@ -4,8 +4,9 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import {Avatar, createMuiTheme, MuiThemeProvider} from "@material-ui/core";
-import StringUtils from "../../utils/StringUtils";
+import StringUtils from "utils/StringUtils";
 import useTheme from "@material-ui/core/styles/useTheme";
+import Tooltip from "@material-ui/core/Tooltip";
 
 const getMuiTheme = (theme) =>
     createMuiTheme({
@@ -15,8 +16,8 @@ const getMuiTheme = (theme) =>
                 colorDefault: {
                     backgroundColor: "white",
                     color: "black",
-                    height: "130px",
-                    width: "130px",
+                    height: "14vh",
+                    width: "14vh",
                 }
             }
         }
@@ -27,7 +28,7 @@ const styles = {
         background: "linear-gradient(to bottom, rgb(186,61,122), rgb(101,46,134))",
         height: "100%",
         position: "relative",
-        borderRadius: "10px"
+        borderRadius: "14px"
     },
     container: {
         height: "100%"
@@ -49,13 +50,13 @@ const styles = {
     title: {
         color: "white",
         textAlign: "center",
-        paddingTop: "10.5%",
+        paddingTop: "4vh",
         paddingBottom: "26px"
     },
     avatar: {
-        transform: "translateX(59%)",
-        height: "130px",
-        width: "130px",
+        transform: "translateX(-50%)",
+        left: "45%",
+        position: "relative",
         borderRadius: "50%",
     },
     mostPlayer: {
@@ -85,7 +86,8 @@ const styles = {
     percentage: {
         color: "white",
         fontWeight: "700",
-        marginLeft: "32%",
+        marginLeft: "25%",
+        transform: "translateX(62%)",
         paddingRight: "26px",
         top: "30%",
         borderBottom: "1px solid white",
@@ -93,44 +95,79 @@ const styles = {
     }
 };
 
-const PlayerPickRank = (props) => {
-    const {classes, data} = props;
+const renderPlayer = (player, classes) => {
+    const {title, avatarClass, name, percentage} = player;
 
-    // const mostPickerPlayer = data.reduce((min, item) => Math.min(min, item.appearences), data[0].appearences);
-    // const leastPickedPlayer = data.reduce((max, item) => Math.max(max, item.appearences), data[0].appearences);
-
-    const renderPlayer = (percentage, name, type) => {
-        return (
-            <Grid item xs={6} className={classes.firstGrid}>
-                <Typography variant="h1" className={classes.title}>
-                    {type == "mostPlayer" ? "Most picked player" : "Least picked player"}
-                </Typography>
-                <div className={classes.avatarContainer}>
-                    <div className={`${classes.avatar} ${ classes[type]}`}>
+    return (
+        <Grid item xs={6} className={classes.firstGrid}>
+            <Typography variant="h1" className={classes.title}>
+                {title}
+            </Typography>
+            <div className={classes.avatarContainer}>
+                <div className={`${classes.avatar} ${avatarClass}`}>
+                    <Tooltip title={name}>
                         <Avatar >
                             <Typography variant="h6" className={classes.avatarName}>
                                 {StringUtils.getNameInitials(name)}
                             </Typography>
                         </Avatar>
-                    </div>
-                    <div className={classes.percentage} >
-                        <Typography variant="h6" style={{lineHeight: "1.6rem"}}>
-                            {percentage}%
-                        </Typography>
-                    </div>
+                    </Tooltip>
                 </div>
-            </Grid>
-        )
+                <div className={classes.percentage} >
+                    <Typography variant="h6" style={{lineHeight: "1.6rem"}}>
+                        {percentage}%
+                    </Typography>
+                </div>
+            </div>
+        </Grid>
+    )
+};
+
+const renderPlayers = (props) => {
+    const {classes, data, teamCount} = props;
+
+    if(!data.length) {
+        return;
+    }
+
+    const playersOrderedByAppearances = data.sort((a, b) => a.appearances - b.appearances);
+
+    const leastPickedPlayer = playersOrderedByAppearances[0];
+    const leastPickedPlayerConfig = {
+        percentage: parseInt((leastPickedPlayer.appearances * 100 ) / teamCount),
+        name: leastPickedPlayer.name,
+        title: "Least picked player",
+        avatarClass: classes.leastPlayer,
+    };
+
+    const mostPickedPlayer = playersOrderedByAppearances[playersOrderedByAppearances.length-1];
+    const mostPickedPlayerConfig = {
+        percentage: parseInt((mostPickedPlayer.appearances * 100) / teamCount),
+        name: mostPickedPlayer.name,
+        title: "Most picked player",
+        avatarClass: classes.mostPlayer,
     };
 
     return (
-        <MuiThemeProvider theme={getMuiTheme(useTheme())}>
+        <React.Fragment>
+            {renderPlayer(mostPickedPlayerConfig, classes)}
+            {renderPlayer(leastPickedPlayerConfig, classes)}
+        </React.Fragment>
+    )
+
+}
+
+const PlayerPickRank = (props) => {
+    const {classes} = props;
+    const theme = useTheme();
+
+    return (
+        <MuiThemeProvider theme={getMuiTheme(theme)}>
             <Paper elevation={1} className={classes.paper}>
                 <div className={classes.whiteCircle} />
 
                 <Grid container className={classes.container}>
-                    {renderPlayer( 75, "Marcelo robinho", "mostPlayer")}
-                    {renderPlayer( 25, "Paulão lanches", "leastPlayer")}
+                    {renderPlayers(props)}
                 </Grid>
             </Paper>
         </MuiThemeProvider>

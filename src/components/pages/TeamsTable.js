@@ -1,16 +1,10 @@
 import React from 'react';
-import Table from "../layout/Table";
+import Table from "components/layout/Table";
 
 const TeamsTable = (props) => {
 
     const columns = [
         {
-            name: "id",
-            options: {
-                display: 'excluded',
-                viewColumns: "false"
-            }
-        }, {
             name: "name",
             label: "Name",
             options: {

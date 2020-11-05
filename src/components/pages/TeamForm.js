@@ -1,27 +1,27 @@
 import React, {useState} from 'react';
 import Paper from "@material-ui/core/Paper/Paper";
-import PaperTitle from "../layout/PaperTitle";
+import PaperTitle from "components/layout/PaperTitle";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
-import Input from "../layout/Input";
+import Input from "components/layout/Input";
 import {Typography} from "@material-ui/core";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
-import Tags from "../layout/Tags";
-import Button from "../layout/Button";
-import defaultToastConfig from "../../utils/ToastUtils";
+import Tags from "components/layout/Tags";
+import Button from "components/layout/Button";
+import defaultToastConfig from "utils/ToastUtils";
 import {Controller, useForm} from "react-hook-form";
 import {useHistory} from "react-router-dom";
-import LoadingSpinner from "../layout/LoadingSpinner";
-import StringUtils from "../../utils/StringUtils";
-import TeamApi from "../../api/TeamApi";
+import LoadingSpinner from "components/layout/LoadingSpinner";
+import StringUtils from "utils/StringUtils";
+import TeamApi from "api/TeamApi";
 import {useSnackbar} from 'react-simple-snackbar'
 
 const TeamForm = () => {
     const [showLoadingSpinner, setShowLoadingSpinner] = useState(false);
     const history = useHistory();
-    const [openSnackbar, closeSnackbar] = useSnackbar(defaultToastConfig);
+    const [openSnackbar] = useSnackbar(defaultToastConfig);
     const {register, handleSubmit, control, errors, reset} = useForm({shouldFocusError: false});
 
 
@@ -124,7 +124,7 @@ const TeamForm = () => {
                                     />
                                 </Grid>
                                 <Grid item>
-                                    <Button variant="contained" fullWidth type="submit">
+                                    <Button type="submit">
                                         <Typography variant="subtitle1">
                                             Save
                                         </Typography>
