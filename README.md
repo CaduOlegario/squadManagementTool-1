@@ -19,6 +19,14 @@ To build the application for production use, run the command:
 
 It builds the app for production to the `build` folder.
 
+## Testing the code
+
+To test the application, run the command 
+
+### `npm run test`
+
+**At the moment the application has only some a small number of tests**
+
 ## Documentation and Style guide
 
 This project has a documentation with the main components, examples and what they receive as props
@@ -66,6 +74,6 @@ Due to time limitations, i wasn't able to develop everything in the scope of thi
 
 **[React DnD](https://react-dnd.github.io/react-dnd/about)** for the drag and drop funcionality
 
-**[Jest](https://jestjs.io/en/)** for testing the application
+**[Jest](https://jestjs.io/en/)** for further testing the application
 
 Although i would never further research to be sure i'd use this specific libraries
