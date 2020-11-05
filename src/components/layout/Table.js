@@ -8,10 +8,11 @@ import EditIcon from '@material-ui/icons/Edit';
 import {createMuiTheme, MuiThemeProvider, withStyles} from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
 import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
 import AddIcon from '@material-ui/icons/Add';
 import useTheme from "@material-ui/core/styles/useTheme";
-import {Link} from "react-router-dom";
+import {useHistory} from "react-router-dom";
+import PropTypes from "prop-types";
+import Button from "./Button";
 
 const getMuiTheme = (theme) =>
     createMuiTheme({
@@ -42,7 +43,7 @@ const getMuiTheme = (theme) =>
                     height: "100%",
                     borderRadius: "14px"
                 },
-                responsiveScrollFullHeight: {
+                responsiveBase: {
                     padding: "0 20px",
                     height: "82% !important",
                     overflowY: "auto",
@@ -144,13 +145,15 @@ const customRowRenderLogic = (data, classes) => {
 };
 
 const Table = (props) => {
-    const {classes} = props;
+    const {classes, title, options, ...dataTablePropsRest} = props;
     const theme = useTheme();
+    const history = useHistory();
+
 
     const dataTableProps = {
-        ...props,
+        ...dataTablePropsRest,
         title: <div>
-            <Typography variant="h1"> {props.title} </Typography>
+            <Typography variant="h1"> {title} </Typography>
         </div>,
         options: {
             print: false,
@@ -161,21 +164,21 @@ const Table = (props) => {
             rowHover: false,
             pagination: false,
             selectableRows: "none",
-            responsive: "scrollFullHeight",
+            responsive: "standard",
             fixedHeader: true,
             elevation: 1,
             customRowRender: (data) => customRowRenderLogic(data, classes),
             customToolbar: ({displayData}) => {
                 return <div>
-                    {/*<Button variant="contained">*/}
-                    {/*    <AddIcon style={{fontSize: "1.5rem"}}/>*/}
-                    {/*</Button>*/}
-                    <Link component={Button} to="/form">
+                    <Button variant="contained" onClick={() => history.push("/form")}>
                         <AddIcon style={{fontSize: "1.5rem"}}/>
-                    </Link>
+                    </Button>
+                    {/*<Link component={Button} to="/form">*/}
+                    {/*    <AddIcon style={{fontSize: "1.5rem"}}/>*/}
+                    {/*</Link>*/}
                 </div>
             },
-            ...props.options,
+            ...options,
         }
     };
 
@@ -184,6 +187,13 @@ const Table = (props) => {
             <MUIDataTable {...dataTableProps} />
         </MuiThemeProvider>
     );
-}
+};
+
+Table.propTypes = {
+    title: PropTypes.string.isRequired,
+    data: PropTypes.array,
+    columns: PropTypes.array,
+    classes: PropTypes.object.isRequired
+};
 
 export default withStyles(styles)(Table);

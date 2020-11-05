@@ -6,6 +6,8 @@ import Box from "@material-ui/core/Box";
 import ClearIcon from '@material-ui/icons/Clear';
 import {ThemeProvider} from "@material-ui/styles";
 import useTheme from "@material-ui/core/styles/useTheme";
+import PropTypes from "prop-types";
+import Input from "./Input";
 
 const getMuiTheme = (theme) =>
     createMuiTheme({
@@ -50,7 +52,6 @@ const Tags = (props) => {
                 multiple
                 options={[]}
                 freeSolo
-                multiline
                 rows={4}
                 closeIcon={<React.Fragment />}
                 renderTags={(value, getTagProps) =>
@@ -75,6 +76,12 @@ const Tags = (props) => {
             />
         </ThemeProvider>
     )
+};
+
+
+Input.propTypes ={
+    label: PropTypes.string.isRequired,
+    placeholder: PropTypes.string,
 };
 
 export default Tags;

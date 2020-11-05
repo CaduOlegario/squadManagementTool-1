@@ -4,7 +4,7 @@ import Box from "@material-ui/core/Box";
 import {Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
     appBar: {
         top: 'auto',
         bottom: 0,
@@ -26,5 +26,7 @@ const Footer = () => {
         </AppBar>
     )
 };
+
+
 
 export default Footer;

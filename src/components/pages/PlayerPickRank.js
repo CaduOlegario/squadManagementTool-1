@@ -7,6 +7,8 @@ import {Avatar, createMuiTheme, MuiThemeProvider} from "@material-ui/core";
 import StringUtils from "utils/StringUtils";
 import useTheme from "@material-ui/core/styles/useTheme";
 import Tooltip from "@material-ui/core/Tooltip";
+import PropTypes from "prop-types";
+import Input from "../layout/Input";
 
 const getMuiTheme = (theme) =>
     createMuiTheme({
@@ -172,6 +174,12 @@ const PlayerPickRank = (props) => {
             </Paper>
         </MuiThemeProvider>
     )
+};
+
+Input.propTypes ={
+    data: PropTypes.array,
+    teamCount: PropTypes.number,
+    classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(PlayerPickRank);

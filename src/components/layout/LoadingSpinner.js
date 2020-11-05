@@ -1,7 +1,7 @@
 import {withStyles} from "@material-ui/core";
 import useTheme from "@material-ui/core/styles/useTheme";
 import CircularProgress from "@material-ui/core/CircularProgress";
-
+import PropTypes from 'prop-types';
 
 const styles = {
     loading: {
@@ -58,5 +58,10 @@ const LoadingSpinner = (props) => {
         </div>
     );
 };
+
+LoadingSpinner.propTypes = {
+    visible: PropTypes.bool.isRequired,
+    classes: PropTypes.object.isRequired
+}
 
 export default withStyles(styles)(LoadingSpinner);

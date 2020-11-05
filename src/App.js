@@ -10,6 +10,7 @@ import SnackbarProvider from 'react-simple-snackbar'
 
 function App() {
 
+    // Simulating logged user
     const currentUser = {
         name: "John Doe"
     };

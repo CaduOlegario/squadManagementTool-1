@@ -3,6 +3,7 @@ import {createMuiTheme, TextField, Typography} from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import {ThemeProvider} from "@material-ui/styles";
 import useTheme from "@material-ui/core/styles/useTheme";
+import PropTypes from "prop-types";
 
 const getMuiTheme = (theme) =>
     createMuiTheme({
@@ -28,19 +29,19 @@ const getMuiTheme = (theme) =>
     });
 
 const Input = (props) => {
-    const {error} = props;
+    const {error, label, ...others} = props;
     const theme = useTheme();
 
     return (
         <ThemeProvider theme={getMuiTheme(theme)}>
             <Box mb={0.5}>
                 <Typography variant="subtitle1"
-                            color={error ? "primary" : ""} >
-                    {props.label}
+                            color={error ? "primary" : undefined} >
+                    {label}
                 </Typography>
             </Box>
             <TextField
-                {...props}
+                {...others}
                 label=""
                 variant="outlined"
                 color="secondary"
@@ -48,6 +49,13 @@ const Input = (props) => {
             />
         </ThemeProvider>
     )
+};
+
+Input.propTypes ={
+    label: PropTypes.string.isRequired,
+    placeholder: PropTypes.string,
+    multiline: PropTypes.bool,
+    rows: PropTypes.number,
 };
 
 export default Input;

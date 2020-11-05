@@ -63,7 +63,6 @@ const TeamForm = () => {
                                         label="Team name"
                                         name="name"
                                         error={!!errors.name}
-                                        validator
                                     />
                                 </Grid>
                                 <Grid item>
@@ -93,7 +92,7 @@ const TeamForm = () => {
                                     <Box mb={0.5}>
                                         <Typography
                                             variant="subtitle1"
-                                            color={!!errors.type ? "primary" : ""} >
+                                            color={!!errors.type ? "primary" : undefined} >
                                             Team type
                                         </Typography>
                                     </Box>
@@ -124,7 +123,7 @@ const TeamForm = () => {
                                     />
                                 </Grid>
                                 <Grid item>
-                                    <Button type="submit">
+                                    <Button type="submit" fullWidth>
                                         <Typography variant="subtitle1">
                                             Save
                                         </Typography>

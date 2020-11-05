@@ -29,7 +29,6 @@ const Button = (props) => {
         <MuiThemeProvider theme={getMuiTheme(theme)}>
             <SourceButton
                 variant="contained"
-                fullWidth
                 {...props}/>
         </MuiThemeProvider>
     )
@@ -37,6 +36,7 @@ const Button = (props) => {
 
 Button.propTypes = {
     type: PropTypes.string,
+    fullWidth: PropTypes.bool
 };
 
 export default Button;

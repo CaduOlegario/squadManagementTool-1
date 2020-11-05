@@ -2,6 +2,7 @@ import React from 'react';
 import {AppBar, Avatar, createMuiTheme, Grid, MuiThemeProvider, Toolbar, Typography} from "@material-ui/core";
 import StringUtils from "utils/StringUtils";
 import useTheme from "@material-ui/core/styles/useTheme";
+import PropTypes from "prop-types";
 
 const getMuiTheme = (theme) =>
     createMuiTheme({
@@ -53,6 +54,10 @@ const Header = ({username}) => {
             </AppBar>
         </MuiThemeProvider>
     )
+};
+
+Header.propTypes = {
+    username: PropTypes.string.isRequired
 };
 
 export default Header;

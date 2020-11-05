@@ -1,5 +1,7 @@
 import React from 'react';
 import Table from "components/layout/Table";
+import Input from "../layout/Input";
+import PropTypes from "prop-types";
 
 const TeamsTable = (props) => {
 
@@ -23,6 +25,10 @@ const TeamsTable = (props) => {
             columns={columns}
         />
     );
+};
+
+Input.propTypes ={
+    data: PropTypes.array
 };
 
 export default TeamsTable;
