@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# Squad Management Tool
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Developing the code
 
-In the project directory, you can run:
+To start the application for development, run the command: 
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+And open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The page will reload if you make edits.
 
-### `npm test`
+## Deploying the code
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To build the application for production use, run the command:
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+It builds the app for production to the `build` folder.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Libraries
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This project was created using the lastest version of [React](https://reactjs.org/) and [React router](https://reactrouter.com/)
 
-### `npm run eject`
+For general components and layout, this project uses [material-ui](https://material-ui.com/).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+For styling this project uses a css-in-js theme solution also from [material-ui](https://material-ui.com/).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+General api calls are handled by [Axios](https://github.com/axios/axios).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+To control and validate forms, [react-hook-form](https://react-hook-form.com/) was used
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+**All libraries used here were selected based on general community acceptance, how well they would adapt to the current necessities and simplicity to write and read**
 
-## Learn More
+## API
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The api used in this project is the v3 demo version from (API-Football)[https://www.api-football.com/documentation-beta]
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+On this demo you can only fetch data, not add new data. So for saving a new team I mocked a online API with [Mocky](https://designer.mocky.io/design)
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Future implementations
 
-### Analyzing the Bundle Size
+Due to time limitations, i wasn't able to develop everything in the scope of this project, for future development the main libraries i would recommend are:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+**[React DnD](https://react-dnd.github.io/react-dnd/about)** for the drag and drop funcionality
 
-### Making a Progressive Web App
+**[Jest](https://jestjs.io/en/)** for testing the application
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Although i would never further research to be sure i'd use this specific libraries
