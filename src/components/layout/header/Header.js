@@ -22,6 +22,9 @@ const getMuiTheme = (theme) =>
         }
     });
 
+/**
+ * Header component that displays the application logo, name, the logged user and it's initials
+ */
 const Header = ({username}) => {
     return (
         <MuiThemeProvider theme={getMuiTheme(useTheme())}>
@@ -57,6 +60,7 @@ const Header = ({username}) => {
 };
 
 Header.propTypes = {
+    /** Name of the logged user */
     username: PropTypes.string.isRequired
 };
 

@@ -1,10 +1,10 @@
 import {BrowserRouter as Router} from 'react-router-dom';
 import {ThemeProvider} from '@material-ui/core/styles';
-import Footer from "./components/layout/Footer";
-import Header from "./components/layout/Header";
-import theme from "./Theme";
+import Footer from "components/layout/footer/Footer";
+import Header from "components/layout/header/Header";
+import theme from "Theme";
 import React from "react";
-import Routes from "./Routes";
+import Routes from "Routes";
 import Box from "@material-ui/core/Box";
 import SnackbarProvider from 'react-simple-snackbar'
 

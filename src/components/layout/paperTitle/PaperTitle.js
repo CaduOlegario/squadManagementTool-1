@@ -10,6 +10,7 @@ const styles = {
     }
 };
 
+/** Title component for paper grid items with a bottom border*/
 const PaperTitle = (props) => {
     const {classes, title} = props;
 
@@ -21,7 +22,9 @@ const PaperTitle = (props) => {
 };
 
 PaperTitle.propTypes = {
+    /** Text of the title */
     title: PropTypes.string.isRequired,
+    /** @ignore */
     classes: PropTypes.object.isRequired
 };
 

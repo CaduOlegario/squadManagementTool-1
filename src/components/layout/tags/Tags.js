@@ -7,7 +7,7 @@ import ClearIcon from '@material-ui/icons/Clear';
 import {ThemeProvider} from "@material-ui/styles";
 import useTheme from "@material-ui/core/styles/useTheme";
 import PropTypes from "prop-types";
-import Input from "./Input";
+import Input from "../input/Input";
 
 const getMuiTheme = (theme) =>
     createMuiTheme({
@@ -38,6 +38,7 @@ const getMuiTheme = (theme) =>
         }
     });
 
+/** Input component that create tags. Accepts the same props from [Material-ui autocomplete free solo multiple values](https://material-ui.com/components/autocomplete/#multiple-values) */
 const Tags = (props) => {
     const theme = useTheme();
     return (
@@ -70,7 +71,7 @@ const Tags = (props) => {
                         {...params}
                         color="secondary"
                         variant="outlined"
-                        // placeholder={props.value.length === 0 && props.placeholder}
+                        placeholder={props.placeholder}
                     />
                 )}
             />
@@ -80,7 +81,9 @@ const Tags = (props) => {
 
 
 Input.propTypes ={
+    /** Input's label */
     label: PropTypes.string.isRequired,
+    /** Input's placeholder */
     placeholder: PropTypes.string,
 };
 

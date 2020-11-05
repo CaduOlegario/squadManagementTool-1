@@ -21,7 +21,9 @@ const getMuiTheme = (theme) =>
         }
     });
 
-
+/**
+ * Button component colored with a gradient. Accepts the same props from [Material-ui button](https://material-ui.com/components/buttons/)
+ */
 const Button = (props) => {
     const theme = useTheme();
 
@@ -35,7 +37,9 @@ const Button = (props) => {
 };
 
 Button.propTypes = {
+    /** HTML input types */
     type: PropTypes.string,
+    /** Allow button to use full width of parent container */
     fullWidth: PropTypes.bool
 };
 

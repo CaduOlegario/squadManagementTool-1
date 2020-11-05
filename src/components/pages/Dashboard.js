@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import TeamsTable from "./TeamsTable";
 import Grid from "@material-ui/core/Grid";
-import LoadingSpinner from "components/layout/LoadingSpinner";
+import LoadingSpinner from "components/layout/loadingSpinner/LoadingSpinner";
 import {useSnackbar} from 'react-simple-snackbar'
 import defaultToastConfig from "utils/ToastUtils";
-import PaperTitle from "components/layout/PaperTitle";
+import PaperTitle from "components/layout/paperTitle/PaperTitle";
 import Paper from "@material-ui/core/Paper/Paper";
-import PlayerPickRank from "./PlayerPickRank";
+import PlayerPickRank from "components/pages/PlayerPickRank";
 import TeamApi from "api/TeamApi";
 import {HandleApi} from "utils/apiUtils";
 

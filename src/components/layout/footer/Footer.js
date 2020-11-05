@@ -13,6 +13,9 @@ const useStyles = makeStyles(() => ({
     }
 }));
 
+/**
+ * Generic footer component with year and "Rights reserved" text
+ */
 const Footer = () => {
     const classes = useStyles();
 
@@ -26,7 +29,5 @@ const Footer = () => {
         </AppBar>
     )
 };
-
-
 
 export default Footer;

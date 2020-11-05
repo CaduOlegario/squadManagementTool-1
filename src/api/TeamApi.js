@@ -11,7 +11,7 @@ class TeamApi {
             url: apiEndpoints.TEAM_LIST_ENDPOINT,
             headers: {
                 'Content-Type': contentTypes.CONTENT_TYPE_APPLICATION_JSON,
-                "X-RapidAPI-Key": "aa3db0366b39f83f50947f8d33467162"
+                "X-RapidAPI-Key": "a4399456d442759ce8d457e1b34aeff5"
             },
         }).then(response => {
             return response.data.response;
@@ -27,7 +27,7 @@ class TeamApi {
             url: apiEndpoints.PLAYER_LIST_ENDPOINT,
             headers: {
                 'Content-Type': contentTypes.CONTENT_TYPE_APPLICATION_JSON,
-                "X-RapidAPI-Key": "aa3db0366b39f83f50947f8d33467162"
+                "X-RapidAPI-Key": "a4399456d442759ce8d457e1b34aeff5"
             },
         }).then(response => {
             return response.data.response;
@@ -44,7 +44,7 @@ class TeamApi {
             url: apiEndpoints.MOCK_INSERT_ENDPOINT + '?mocky-delay=100ms',
             headers: {
                 'Content-Type': contentTypes.CONTENT_TYPE_APPLICATION_JSON,
-                "X-RapidAPI-Key": "aa3db0366b39f83f50947f8d33467162"
+                "X-RapidAPI-Key": "a4399456d442759ce8d457e1b34aeff5"
             },
             data: JSON.stringify(team)
         }).then(response => {

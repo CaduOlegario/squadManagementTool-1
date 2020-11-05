@@ -28,15 +28,16 @@ const getMuiTheme = (theme) =>
         }
     });
 
+/** Input component aligned with prototype styling.  Accepts the same props from [Material-ui text field](https://material-ui.com/components/text-fields/) */
 const Input = (props) => {
-    const {error, label, ...others} = props;
+    const {label, ...others} = props;
     const theme = useTheme();
 
     return (
         <ThemeProvider theme={getMuiTheme(theme)}>
             <Box mb={0.5}>
                 <Typography variant="subtitle1"
-                            color={error ? "primary" : undefined} >
+                            color={props.error ? "primary" : undefined} >
                     {label}
                 </Typography>
             </Box>
@@ -52,10 +53,16 @@ const Input = (props) => {
 };
 
 Input.propTypes ={
+    /** Input title name */
     label: PropTypes.string.isRequired,
+    /** Placeholder for the input */
     placeholder: PropTypes.string,
+    /** Allow input to accept multiple lines */
     multiline: PropTypes.bool,
+    /** Define the number of lines in the input in case its a multiline input */
     rows: PropTypes.number,
+    /** Define if the component should change it's color to demonstrate an error */
+    error: PropTypes.bool,
 };
 
 export default Input;

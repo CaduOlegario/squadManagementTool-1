@@ -40,6 +40,7 @@ const styles = {
     }
 };
 
+/** Loading spinner component for API calls */
 const LoadingSpinner = (props) => {
     const {visible, classes} = props;
     const theme = useTheme();
@@ -60,8 +61,10 @@ const LoadingSpinner = (props) => {
 };
 
 LoadingSpinner.propTypes = {
+    /** Defines if the loader will be visible */
     visible: PropTypes.bool.isRequired,
+    /** @ignore */
     classes: PropTypes.object.isRequired
-}
+};
 
 export default withStyles(styles)(LoadingSpinner);

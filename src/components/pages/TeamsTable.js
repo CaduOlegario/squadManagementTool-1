@@ -1,6 +1,6 @@
 import React from 'react';
-import Table from "components/layout/Table";
-import Input from "../layout/Input";
+import Table from "components/layout/table/Table";
+import Input from "components/layout/input/Input";
 import PropTypes from "prop-types";
 
 const TeamsTable = (props) => {
@@ -23,6 +23,7 @@ const TeamsTable = (props) => {
             title="My Teams"
             data={props.data}
             columns={columns}
+            showButton={true}
         />
     );
 };

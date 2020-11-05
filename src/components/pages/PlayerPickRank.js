@@ -8,7 +8,7 @@ import StringUtils from "utils/StringUtils";
 import useTheme from "@material-ui/core/styles/useTheme";
 import Tooltip from "@material-ui/core/Tooltip";
 import PropTypes from "prop-types";
-import Input from "../layout/Input";
+import Input from "../layout/input/Input";
 
 const getMuiTheme = (theme) =>
     createMuiTheme({

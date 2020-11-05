@@ -1,19 +1,19 @@
 import React, {useState} from 'react';
 import Paper from "@material-ui/core/Paper/Paper";
-import PaperTitle from "components/layout/PaperTitle";
+import PaperTitle from "components/layout/paperTitle/PaperTitle";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
-import Input from "components/layout/Input";
+import Input from "components/layout/input/Input";
 import {Typography} from "@material-ui/core";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
-import Tags from "components/layout/Tags";
-import Button from "components/layout/Button";
+import Tags from "components/layout/tags/Tags";
+import Button from "components/layout/button/Button";
 import defaultToastConfig from "utils/ToastUtils";
 import {Controller, useForm} from "react-hook-form";
 import {useHistory} from "react-router-dom";
-import LoadingSpinner from "components/layout/LoadingSpinner";
+import LoadingSpinner from "components/layout/loadingSpinner/LoadingSpinner";
 import StringUtils from "utils/StringUtils";
 import TeamApi from "api/TeamApi";
 import {useSnackbar} from 'react-simple-snackbar'

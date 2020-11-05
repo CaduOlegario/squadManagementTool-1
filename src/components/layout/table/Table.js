@@ -12,7 +12,7 @@ import AddIcon from '@material-ui/icons/Add';
 import useTheme from "@material-ui/core/styles/useTheme";
 import {useHistory} from "react-router-dom";
 import PropTypes from "prop-types";
-import Button from "./Button";
+import Button from "../button/Button";
 
 const getMuiTheme = (theme) =>
     createMuiTheme({
@@ -119,6 +119,7 @@ const styles = {
     },
 };
 
+/** Custom logic to render each row with actions */
 const customRowRenderLogic = (data, classes) => {
     return (
         <TableRow className={classes.tableRow}>
@@ -144,8 +145,9 @@ const customRowRenderLogic = (data, classes) => {
     );
 };
 
+/** Table component aligned with prototype styling.  Accepts the same props from [MUI-Datatables](https://github.com/gregnb/mui-datatables) */
 const Table = (props) => {
-    const {classes, title, options, ...dataTablePropsRest} = props;
+    const {classes, title, options, showButton, ...dataTablePropsRest} = props;
     const theme = useTheme();
     const history = useHistory();
 
@@ -170,9 +172,9 @@ const Table = (props) => {
             customRowRender: (data) => customRowRenderLogic(data, classes),
             customToolbar: ({displayData}) => {
                 return <div>
-                    <Button variant="contained" onClick={() => history.push("/form")}>
+                    {showButton && <Button variant="contained" onClick={() => history.push("/form")}>
                         <AddIcon style={{fontSize: "1.5rem"}}/>
-                    </Button>
+                    </Button>}
                     {/*<Link component={Button} to="/form">*/}
                     {/*    <AddIcon style={{fontSize: "1.5rem"}}/>*/}
                     {/*</Link>*/}
@@ -190,9 +192,15 @@ const Table = (props) => {
 };
 
 Table.propTypes = {
+    /** Table's title */
     title: PropTypes.string.isRequired,
+    /** Data to be displayed on the table */
     data: PropTypes.array,
+    /** Columns of data to be displayer */
     columns: PropTypes.array,
+    /** Define if table will contain the button to redirect to a register page */
+    showButton: PropTypes.bool,
+    /** @ignore */
     classes: PropTypes.object.isRequired
 };
 
