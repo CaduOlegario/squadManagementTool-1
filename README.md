@@ -19,6 +19,23 @@ To build the application for production use, run the command:
 
 It builds the app for production to the `build` folder.
 
+## Documentation and Style guide
+
+This project has a documentation with the main components, examples and what they receive as props
+
+To start the documentation run the command
+
+### `npm run styleguide`
+
+and open [http://localhost:6060](http://localhost:6060).
+
+To build the docmentation for production use, run the command 
+
+### `npm run styleguide:build`
+
+It builds the app for production to the `styleguide` folder.
+
+
 ## Libraries
 
 This project was created using the lastest version of [React](https://reactjs.org/) and [React router](https://reactrouter.com/)
@@ -30,6 +47,9 @@ For styling this project uses a css-in-js theme solution also from [material-ui]
 General api calls are handled by [Axios](https://github.com/axios/axios).
 
 To control and validate forms, [react-hook-form](https://react-hook-form.com/) was used
+
+Documentation was created using [React Styleguidist](https://react-styleguidist.js.org/) and [PropTypes](https://www.npmjs.com/package/prop-types)
+
 
 **All libraries used here were selected based on general community acceptance, how well they would adapt to the current necessities and simplicity to write and read**
 
