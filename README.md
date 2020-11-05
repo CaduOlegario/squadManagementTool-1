@@ -35,7 +35,7 @@ To control and validate forms, [react-hook-form](https://react-hook-form.com/) w
 
 ## API
 
-The api used in this project is the v3 demo version from (API-Football)[https://www.api-football.com/documentation-beta]
+The api used in this project is the v3 demo version from [API-Football](https://www.api-football.com/documentation-beta)
 
 On this demo you can only fetch data, not add new data. So for saving a new team I mocked a online API with [Mocky](https://designer.mocky.io/design)
 
